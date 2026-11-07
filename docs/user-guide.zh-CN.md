@@ -25,13 +25,30 @@
 <a id="install"></a>
 ## 1. 安装与更新
 
-本扩展面向 **Forge Neo**。已验证的宿主为 Linux/Python 3.12 下的 neo-2.31，提交 `4f4284b02a5c814b81c328c64ed7e99a139f21ef`。其他版本及操作系统未在本次发布中验证。
+本扩展面向 **Forge Neo**。已验证的宿主为 Linux/Python 3.12 下的 neo-2.31，提交 `4f4284b02a5c814b81c328c64ed7e99a139f21ef`。其他宿主版本尚未验证。Windows BAT 安装流程单独测试，不代表已验证 Windows 上的实际生成。
 
 ### 安装前准备
 
 如果尚未安装 Forge Neo，请先按照 [Forge Neo 官方安装说明](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation)完成安装。准备检查点及匹配的编码器和 VAE，并在安装扩展前确认 Forge 本身可以正常生成图片。各模型所需文件请参考 [Forge 官方模型指南](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models)。
 
-在下方 **URL、Git、ZIP 三种方式中任选一种**。Forge 目录指包含 `launch.py` 和 `extensions/` 的目录；本扩展不应安装到 ComfyUI 的 `custom_nodes/` 中。
+在下方 **Windows BAT、URL、Git、ZIP 中任选一种**。Forge 目录指包含 `launch.py` 和 `extensions/` 的目录；本扩展不应安装到 ComfyUI 的 `custom_nodes/` 中。
+
+<a id="windows-bat"></a>
+### Windows 推荐：一个 BAT 完成安装与更新
+
+1. **完全退出 Forge Neo 及其启动终端。** 只关闭浏览器标签页并不会停止 Forge。
+2. 下载 **[Install-RS-MultiCharacter.bat](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat)**。通常不需要 Git 或管理员权限。
+3. 双击 BAT，粘贴 Forge 路径，或按 **Enter** 打开文件夹选择器。
+4. 选择**包含 `launch.py` 的 Forge Neo 目录**。选择便携版的外层目录时，安装器也会查找其中的 `webui`。不要选择模型目录或 ComfyUI。
+5. 安装器下载最新公开版本（**包括 Alpha**），验证 SHA-256 后安装。显示 **Installed** 后，用平时的启动器开启 Forge，再在浏览器按 **Ctrl+Shift+R**。BAT 不会自动启动 Forge。
+
+检测到运行中的 Forge/WebUI 时，安装器会提示先退出并停止安装，不会强制终止进程。下载、校验和压缩包验证在替换旧扩展前完成；替换失败时恢复原目录。
+
+旧扩展整体备份到 **`<Forge>/.rs-mc-backups/sd-forge-rs-multicharacter-日期-ID/`**，不会作为第二个扩展加载。Forge 设置、模型、姿势库、参考文件及其他扩展保持不变。扩展内部的手动修改保存在备份中。需要回退时，先退出 Forge，将当前扩展目录移到其他位置，再把所选备份移回 `extensions/sd-forge-rs-multicharacter`。
+
+**更新时也先退出 Forge，再运行同一个 BAT。** BAT 使用发布 ZIP 安装方式；替换 URL/Git 安装后，`.git` 也会保存在备份中，之后请用 BAT 更新。如需继续使用 Git 更新，请保留下方的 URL/Git 安装方式。
+
+BAT **只安装本扩展**，不安装 Forge Neo 本体、检查点、可选功能依赖或权重，也不修改 GPU 选择、启动参数或浏览器自动打开设置。可选功能见[第 13 节](#models)。Linux 请使用下方 URL/Git/ZIP 方式。
 
 ### 方式 A：在 WebUI 中通过 URL 安装
 

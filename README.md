@@ -1,5 +1,7 @@
 # RS MultiCharacter for Forge Neo
 
+**Easy Windows install:** close Forge Neo completely, then **[download the BAT](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat) → run → select the Forge folder**. It installs/updates and backs up the previous extension without Git. [Steps and rollback](docs/user-guide.md#windows-bat).
+
 **[Installation steps: URL, Git or ZIP, verification and updates](docs/user-guide.md#install)**
 
 [한국어](README.ko.md) · **English** · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
@@ -8,7 +10,7 @@
 
 Regional character prompts, masks, LoRAs, references and pose controls for Forge Neo, based on [ComfyUI RS MultiCharacter Sampler](https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler).
 
-**Version `0.2.0a1`, alpha.** The original feature modules are now connected to Forge, except App Mode and per-character negatives. Actual-checkpoint validation is primarily **Anima 2B**. SD1.5, SDXL/Illustrious, FLUX, Krea 2 and MOSS have native runtime paths; small random-weight execution checks do not establish trained-checkpoint quality or all combinations.
+**Version `0.2.0a2`, alpha.** The original feature modules are now connected to Forge, except App Mode and per-character negatives. Actual-checkpoint validation is primarily **Anima 2B**. SD1.5, SDXL/Illustrious, FLUX, Krea 2 and MOSS have native runtime paths; small random-weight execution checks do not establish trained-checkpoint quality or all combinations.
 
 ![Actual Forge generation](docs/images/two-character-example.png)
 

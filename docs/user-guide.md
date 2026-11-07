@@ -25,13 +25,30 @@ For **0.2.0a1 (alpha)**. This guide follows the shipped interface. Most extensio
 <a id="install"></a>
 ## 1. Install and update
 
-Use **Forge Neo**. The tested host is neo-2.31, commit `4f4284b02a5c814b81c328c64ed7e99a139f21ef`, on Linux/Python 3.12. Other revisions and operating systems have not been validated in this release.
+Use **Forge Neo**. The tested host is neo-2.31, commit `4f4284b02a5c814b81c328c64ed7e99a139f21ef`, on Linux/Python 3.12. Other host revisions are unverified. The Windows BAT installation procedure is tested separately; this does not establish actual Windows generation.
 
 ### Before installing
 
 If you do not have Forge Neo, follow its [official installation instructions](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation) first. Prepare a checkpoint with its matching text encoder and VAE, and confirm that Forge can generate a normal image before adding the extension. See Forge's [model download guide](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models) for each model's required files.
 
-Choose **one of URL, Git or ZIP installation** below. The Forge directory contains `launch.py` and `extensions/`. Do not install this extension in ComfyUI's `custom_nodes/`.
+Choose **one of Windows BAT, URL, Git or ZIP installation** below. The Forge directory contains `launch.py` and `extensions/`. Do not install this extension in ComfyUI's `custom_nodes/`.
+
+<a id="windows-bat"></a>
+### Recommended on Windows: one BAT for installation and updates
+
+1. **Close Forge Neo and its launcher/terminal completely.** Closing the browser tab alone leaves Forge running.
+2. Download **[Install-RS-MultiCharacter.bat](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat)**. Git and administrator privileges are normally unnecessary.
+3. Double-click the BAT. Paste the Forge path, or press **Enter** to open a folder picker.
+4. Select the **Forge Neo directory containing `launch.py`**. A portable parent directory also works: the installer finds its `webui` child. Do not select a models directory or ComfyUI.
+5. The installer downloads the latest published release (**including alphas**), verifies SHA-256 and installs it. After **Installed** appears, start Forge with your usual launcher and press **Ctrl+Shift+R** in the browser. The BAT does not start Forge automatically.
+
+A running Forge/WebUI process blocks installation and displays a request to close it; the installer never kills processes. Download, checksum and archive validation happen before replacing the existing extension. A failed replacement restores the previous directory.
+
+The entire old extension is saved under **`<Forge>/.rs-mc-backups/sd-forge-rs-multicharacter-DATE-ID/`**, outside the extension loader. Forge settings, models, pose library, reference files and other extensions are kept. Manual edits inside the extension remain in the backup. To roll back, close Forge, move the current extension elsewhere, and move the chosen backup to `extensions/sd-forge-rs-multicharacter`.
+
+**For updates, close Forge and run the same BAT again.** This is a release/ZIP installation. If it replaces a URL/Git installation, `.git` is preserved in the backup; use the BAT for subsequent updates. Keep the URL/Git method below if you prefer Git-managed updates.
+
+The BAT installs **this extension only**. It does not install Forge Neo itself, checkpoints, or optional feature packages/weights, and does not change GPU selection, launch options or browser auto-launch. See [section 13](#models) for optional features. On Linux, use URL/Git/ZIP below.
 
 ### Method A: Install by URL in the WebUI
 

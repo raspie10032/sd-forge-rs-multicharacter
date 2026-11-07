@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0a2 — 2026-11-07
+
+- Add a standalone Windows BAT installer: choose the Forge Neo directory; Git is not required. Fetch the latest published release, including prereleases, and verify SHA-256 before replacing files.
+- Refuse a running WebUI, back up the complete old extension outside `extensions/`, and roll back a failed replacement. Preserve host settings/models, GPU selection and launch options.
+- Document BAT installation, updates and rollback in Korean, English, Japanese and Simplified Chinese. Optional packages/weights and Forge Neo itself remain separate.
+- Add Windows PowerShell 5.1 CI for actual BAT execution, online release installation and running-process refusal, plus isolated backup/rollback/path/checksum/archive checks. Windows generation is outside this installer test.
+
 ## 0.2.0a1 — 2026-11-07
 
 - Port the remaining original feature modules except App Mode and per-character negatives.

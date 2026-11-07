@@ -1,5 +1,7 @@
 # RS MultiCharacter for Forge Neo
 
+**Windows 简便安装：** 完全退出 Forge Neo，然后 **[下载 BAT](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat) → 运行 → 选择 Forge 目录**。无需 Git，自动安装／更新并备份旧扩展。[步骤与回退](docs/user-guide.zh-CN.md#windows-bat)。
+
 **[安装步骤：URL、Git、ZIP、安装确认与更新](docs/user-guide.zh-CN.md#install)**
 
 [한국어](README.ko.md) · [English](README.md) · [日本語](README.ja.md) · **简体中文**
@@ -8,7 +10,7 @@
 
 **在 Forge Neo 中组合角色独立提示词、区域、LoRA、参考图与姿势的扩展**。它将 [ComfyUI RS MultiCharacter Sampler](https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler) 的区域 attention 及功能模块接入 Forge。
 
-**当前版本为 `0.2.0a1` Alpha。** 训练后检查点的实际生成验证以 **Anima 2B** 为主。SD1.5、SDXL/Illustrious、FLUX、Krea 2、MOSS 也有执行路径，但小型随机权重模型的检查不能证明实际生成质量。扩展界面目前主要为韩文／英文，指南保留实际显示名称以便查找。
+**当前版本为 `0.2.0a2` Alpha。** 训练后检查点的实际生成验证以 **Anima 2B** 为主。SD1.5、SDXL/Illustrious、FLUX、Krea 2、MOSS 也有执行路径，但小型随机权重模型的检查不能证明实际生成质量。扩展界面目前主要为韩文／英文，指南保留实际显示名称以便查找。
 
 ![Forge 双人生成示例](docs/images/two-character-example.png)
 

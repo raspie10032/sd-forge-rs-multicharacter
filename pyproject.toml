@@ -1,6 +1,6 @@
 [project]
 name = "sd-forge-rs-multicharacter"
-version = "0.2.0a1"
+version = "0.2.0a2"
 description = "Regional character prompts, LoRAs, masks, references and pose controls for Forge Neo"
 requires-python = ">=3.10"
 license = "GPL-3.0-only"

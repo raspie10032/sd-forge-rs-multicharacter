@@ -32,3 +32,17 @@ jobs:
       - run: node --check javascript/rs_multicharacter.js
       - run: node --check javascript/rs_features.js
       - run: node --check rs_forge_mc/web/pose-adapter.js
+      - run: python tools/build_windows_installer.py --check
+
+  windows-installer:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python tools/build_windows_installer.py --check
+      - name: Test standalone installer with Windows PowerShell 5.1
+        shell: powershell
+        run: ./tools/test_windows_installer.ps1 -Online

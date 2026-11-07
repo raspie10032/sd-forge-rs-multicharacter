@@ -25,13 +25,30 @@
 <a id="install"></a>
 ## 1. インストールと更新
 
-**Forge Neo** 用の拡張機能です。検証済みホストは Linux/Python 3.12 上の neo-2.31、コミット `4f4284b02a5c814b81c328c64ed7e99a139f21ef` です。他のリビジョンや OS は、このリリースでは未検証です。
+**Forge Neo** 用の拡張機能です。検証済みホストは Linux/Python 3.12 上の neo-2.31、コミット `4f4284b02a5c814b81c328c64ed7e99a139f21ef` です。他のホストリビジョンは未検証です。Windows BAT の導入処理は別途検査しており、Windows での実生成検証を意味しません。
 
 ### インストール前の準備
 
 Forge Neo がない場合は、先に [Forge Neo 公式のインストール手順](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation)に従って導入します。チェックポイントと対応するエンコーダー・VAE を準備し、拡張機能を入れる前に Forge 単体で通常の画像を生成できることを確認します。必要なファイルは [Forge 公式モデル案内](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models)を参照してください。
 
-下の **URL・Git・ZIP のいずれか1つ**で導入します。Forge フォルダーは `launch.py` と `extensions/` がある場所です。ComfyUI の `custom_nodes/` には入れません。
+下の **Windows BAT・URL・Git・ZIP のいずれか1つ**で導入します。Forge フォルダーは `launch.py` と `extensions/` がある場所です。ComfyUI の `custom_nodes/` には入れません。
+
+<a id="windows-bat"></a>
+### Windows 推奨：BAT 1個でインストール・更新
+
+1. **Forge Neo と起動用ターミナルを完全に終了**します。ブラウザーのタブを閉じるだけでは Forge は動いたままです。
+2. **[Install-RS-MultiCharacter.bat をダウンロード](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat)**します。通常、Git や管理者権限は不要です。
+3. BAT をダブルクリックし、Forge のパスを貼り付けるか、**Enter** でフォルダー選択画面を開きます。
+4. **`launch.py` がある Forge Neo フォルダー**を選びます。ポータブル版の親フォルダーを選ぶと、内部の `webui` を探します。モデルフォルダーや ComfyUI は選ばないでください。
+5. 最新の公開リリース（**アルファ版を含む**）を取得し、SHA-256 を確認して導入します。**Installed** が表示されたら、普段のランチャーで Forge を起動し、ブラウザーで **Ctrl+Shift+R** を押します。BAT は Forge を自動起動しません。
+
+動作中の Forge/WebUI が見つかると、終了を案内して処理を中止します。プロセスは強制終了しません。取得・チェックサム・ZIP の検証は既存拡張の交換前に行い、交換に失敗した場合は元のフォルダーに戻します。
+
+旧拡張は丸ごと **`<Forge>/.rs-mc-backups/sd-forge-rs-multicharacter-日付-ID/`** に保存します。Forge 設定、モデル、ポーズライブラリ、参照ファイル、他の拡張は保持します。拡張内の手動変更はバックアップに残ります。元に戻すには Forge を終了し、現在の拡張フォルダーを別の場所へ移してから、バックアップを `extensions/sd-forge-rs-multicharacter` に移します。
+
+**更新時も Forge を終了して同じ BAT を実行**します。BAT はリリース ZIP 方式です。URL/Git 版を置き換えた場合、`.git` もバックアップに移るため、以後は BAT で更新してください。Git 管理を続ける場合は下の URL/Git 方式を使います。
+
+BAT が導入するのは**この拡張のみ**です。Forge Neo 本体、チェックポイント、追加機能の依存パッケージ・重みは導入せず、GPU 選択、起動オプション、ブラウザー自動起動設定も変更しません。追加機能は[13節](#models)を参照してください。Linux では下の URL/Git/ZIP 方式を使います。
 
 ### 方法 A：WebUI で URL からインストール
 

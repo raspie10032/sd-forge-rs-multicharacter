@@ -1,5 +1,7 @@
 # RS MultiCharacter for Forge Neo
 
+**Windows 簡単導入：** Forge Neo を完全に終了し、**[BAT を取得](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat) → 実行 → Forge フォルダーを選択**。Git 不要で導入・更新と旧拡張のバックアップを行います。[手順と復元](docs/user-guide.ja.md#windows-bat)。
+
 **[インストール手順：URL・Git・ZIP、導入確認と更新](docs/user-guide.ja.md#install)**
 
 [한국어](README.ko.md) · [English](README.md) · **日本語** · [简体中文](README.zh-CN.md)
@@ -8,7 +10,7 @@
 
 **Forge Neo でキャラクター別のプロンプト、領域、LoRA、参照画像とポーズを組み合わせる拡張機能**です。[ComfyUI RS MultiCharacter Sampler](https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler) の領域 attention と機能モジュールを Forge に接続しています。
 
-**現在は `0.2.0a1` アルファ版です。** 実際のチェックポイントでの生成検証は **Anima 2B 中心**です。SD1.5、SDXL/Illustrious、FLUX、Krea 2、MOSS の実行経路もありますが、小さなランダム重みモデルによる検査は生成品質の検証ではありません。UI は現在主に韓国語／英語です。ガイドには実際の表示名を併記しています。
+**現在は `0.2.0a2` アルファ版です。** 実際のチェックポイントでの生成検証は **Anima 2B 中心**です。SD1.5、SDXL/Illustrious、FLUX、Krea 2、MOSS の実行経路もありますが、小さなランダム重みモデルによる検査は生成品質の検証ではありません。UI は現在主に韓国語／英語です。ガイドには実際の表示名を併記しています。
 
 ![Forge で生成した2人の例](docs/images/two-character-example.png)
 

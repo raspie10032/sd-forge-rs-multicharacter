@@ -25,13 +25,30 @@
 <a id="install"></a>
 ## 1. 설치와 업데이트
 
-**Forge Neo**용 확장입니다. 검증한 호스트는 Linux/Python 3.12의 neo-2.31, 커밋 `4f4284b02a5c814b81c328c64ed7e99a139f21ef`입니다. 다른 버전·OS는 이번 릴리스에서 검증하지 않았습니다.
+**Forge Neo**용 확장입니다. 검증한 호스트는 Linux/Python 3.12의 neo-2.31, 커밋 `4f4284b02a5c814b81c328c64ed7e99a139f21ef`입니다. 다른 호스트 버전은 미검증입니다. Windows BAT 설치 절차는 별도로 검사하며, Windows에서의 실제 생성 검증을 뜻하지는 않습니다.
 
 ### 설치 전 준비
 
 Forge Neo가 없다면 먼저 [Forge Neo 공식 설치 안내](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation)를 따라 설치합니다. 사용할 체크포인트와 맞는 인코더·VAE를 준비하고 Forge 자체에서 일반 이미지 한 장이 생성되는지 확인합니다. 모델별 파일은 [Forge 공식 모델 안내](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models)를 참고하세요.
 
-아래 **URL·Git·ZIP 중 한 가지 방법**으로 설치합니다. Forge 폴더는 `launch.py`와 `extensions/`가 있는 폴더입니다. 이 확장은 ComfyUI의 `custom_nodes/`에 넣지 않습니다.
+아래 **Windows BAT·URL·Git·ZIP 중 한 가지 방법**으로 설치합니다. Forge 폴더는 `launch.py`와 `extensions/`가 있는 폴더입니다. 이 확장은 ComfyUI의 `custom_nodes/`에 넣지 않습니다.
+
+<a id="windows-bat"></a>
+### Windows 권장: BAT 하나로 설치·업데이트
+
+1. **Forge Neo와 실행 터미널을 완전히 종료**합니다. 브라우저 탭만 닫으면 Forge는 계속 실행 중입니다.
+2. **[Install-RS-MultiCharacter.bat 다운로드](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat)**를 저장합니다. Git 설치나 관리자 권한은 일반적으로 필요하지 않습니다.
+3. BAT를 더블클릭합니다. Forge 경로를 붙여넣거나 **Enter**를 눌러 폴더 선택창을 엽니다.
+4. **`launch.py`가 있는 Forge Neo 폴더**를 지정합니다. 포터블은 바깥 폴더를 선택해도 안쪽 `webui`를 찾습니다. 모델 폴더나 ComfyUI 폴더를 선택하지 마세요.
+5. 최신 공개 릴리스(**알파 포함**) 다운로드·SHA-256 확인·설치가 끝나면 **Installed**가 표시됩니다. 평소 쓰는 실행기로 Forge를 켜고 브라우저에서 **Ctrl+Shift+R**을 누릅니다. BAT가 Forge를 자동 실행하지는 않습니다.
+
+실행 중인 Forge/WebUI가 감지되면 설치를 멈추고 종료를 안내합니다. 프로세스를 강제 종료하지 않습니다. 다운로드·체크섬·압축 검증은 기존 확장 교체 전에 수행하고, 교체 실패 시 이전 폴더를 복원합니다.
+
+기존 확장은 **`<Forge>/.rs-mc-backups/sd-forge-rs-multicharacter-날짜-고유값/`**에 통째로 보관합니다. Forge 설정·모델·포즈 라이브러리·참조 파일·다른 확장은 그대로 둡니다. 확장 내부를 직접 수정한 파일은 백업에 남습니다. 되돌리려면 Forge를 종료하고 현재 확장 폴더를 다른 곳에 옮긴 뒤, 백업을 `extensions/sd-forge-rs-multicharacter`로 되돌립니다.
+
+**업데이트도 Forge를 종료한 뒤 같은 BAT를 다시 실행**합니다. BAT는 릴리스 ZIP 방식입니다. 기존 URL/Git 설치에 사용하면 `.git`도 백업으로 옮겨지므로, 이후에는 BAT로 업데이트합니다. Git 관리를 계속 쓰려면 아래 URL/Git 방식을 유지하세요.
+
+BAT는 **이 확장만 설치**합니다. Forge Neo 본체·체크포인트·선택 기능의 패키지/모델은 설치하지 않고, GPU 선택·실행 옵션·브라우저 자동 실행 설정도 바꾸지 않습니다. 선택 기능은 [13절](#models)을 참고하세요. Linux에서는 아래 URL/Git/ZIP 방식을 사용합니다.
 
 ### 방법 A: WebUI에서 URL로 설치
 

@@ -1,5 +1,7 @@
 # RS MultiCharacter for Forge Neo
 
+**Windows 간편 설치:** Forge Neo를 완전히 종료한 뒤 **[설치 BAT 다운로드](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases/download/v0.2.0a2/Install-RS-MultiCharacter.bat) → 실행 → Forge 폴더 선택**. Git 없이 설치·업데이트와 이전 확장 백업을 처리합니다. [사용 순서·백업 복원](docs/user-guide.ko.md#windows-bat).
+
 **[설치 방법 바로 보기: URL·Git·ZIP, 설치 확인과 업데이트](docs/user-guide.ko.md#install)**
 
 **한국어** · [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
@@ -8,7 +10,7 @@
 
 **Forge Neo에서 캐릭터별 프롬프트·영역·LoRA·이미지 참조를 조합하는 확장**입니다. [ComfyUI 원본](https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler)의 영역 attention과 기능 모듈을 Forge 실행부에 연결했습니다.
 
-**현재 `0.2.0a1` 알파입니다.** 앱 모드와 캐릭터별 네거티브는 제외했습니다. Anima 외에 SD1.5·SDXL/Illustrious·FLUX·Krea 2·MOSS 실행 경로도 추가했지만, 실제 체크포인트 생성 검증은 Anima 2B 중심입니다. 다른 모델의 작은 네이티브 모델 검사는 실제 체크포인트 품질 검증을 뜻하지 않습니다.
+**현재 `0.2.0a2` 알파입니다.** 앱 모드와 캐릭터별 네거티브는 제외했습니다. Anima 외에 SD1.5·SDXL/Illustrious·FLUX·Krea 2·MOSS 실행 경로도 추가했지만, 실제 체크포인트 생성 검증은 Anima 2B 중심입니다. 다른 모델의 작은 네이티브 모델 검사는 실제 체크포인트 품질 검증을 뜻하지 않습니다.
 
 ![실제 Forge에서 생성한 우산 공유 장면](docs/images/two-character-example.png)
 
