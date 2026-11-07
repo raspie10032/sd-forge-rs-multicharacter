@@ -177,3 +177,5 @@ try {
     Remove-Item Env:\RS_MC_NO_PAUSE -ErrorAction SilentlyContinue
     Remove-Item -LiteralPath $temp -Recurse -Force
 }
+# Expected BAT failures above must not leak LASTEXITCODE into the Actions shell.
+exit 0
