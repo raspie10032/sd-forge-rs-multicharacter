@@ -1,0 +1,50 @@
+{
+  "kind": "actual live Forge inputs and trained Anima weights replayed through original ComfyUI routing/LoRA",
+  "dtype": "torch.bfloat16",
+  "device": "cuda:0",
+  "latent_shape": [
+    2,
+    16,
+    1,
+    144,
+    216
+  ],
+  "text_shapes": [
+    [
+      2,
+      512,
+      1024
+    ],
+    [
+      1,
+      512,
+      1024
+    ],
+    [
+      1,
+      512,
+      1024
+    ]
+  ],
+  "multiplier": 1.0,
+  "cases": [
+    {
+      "mode": "precision",
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0,
+      "live_forge_vs_replay": {
+        "max_abs": 0.0,
+        "rmse": 0.0,
+        "relative_rmse": 0.0
+      }
+    },
+    {
+      "mode": "normal",
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    }
+  ],
+  "limits": "Diffusion/region/LoRA parity with identical encoded text, latent, sigma and weights. Does not establish independent tokenization, RNG, sampler or VAE parity."
+}

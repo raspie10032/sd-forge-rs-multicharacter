@@ -1,0 +1,52 @@
+{
+  "backend": "native Forge Neo Anima + KModel + UnetPatcher, CPU, random tiny weights",
+  "checkpoint_generation": false,
+  "lora_layers": [
+    "diffusion_model.blocks.0.cross_attn.q_proj",
+    "diffusion_model.blocks.0.cross_attn.k_proj",
+    "diffusion_model.blocks.0.mlp.layer1"
+  ],
+  "regional_max_delta": 0.059470295906066895,
+  "restoration_exact": true,
+  "normal_audit": {
+    "model_calls": 2,
+    "prediction_passes": 2,
+    "restored_calls": 2,
+    "grids": [
+      [
+        8,
+        8
+      ]
+    ],
+    "requested_lora_mode": "normal",
+    "effective_lora_mode": "normal",
+    "last_schedule": {
+      "common_prior": 0.05,
+      "character_gain": 1.7,
+      "separation": 0.9
+    }
+  },
+  "audit": {
+    "model_calls": 2,
+    "prediction_passes": 4,
+    "restored_calls": 2,
+    "grids": [
+      [
+        8,
+        8
+      ],
+      [
+        12,
+        16
+      ]
+    ],
+    "requested_lora_mode": "precision",
+    "effective_lora_mode": "precision",
+    "last_schedule": {
+      "common_prior": 0.05,
+      "character_gain": 1.7,
+      "separation": 0.9
+    }
+  },
+  "failure_restoration": true
+}

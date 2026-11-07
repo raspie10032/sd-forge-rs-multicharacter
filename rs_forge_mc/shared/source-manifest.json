@@ -1,0 +1,33 @@
+{
+  "source": "https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler",
+  "files": {
+    "characters.py": "2dce1038dd452bcec9ace00b1b2a8b3b96b0ce97da5ef894c05614657d4e19db",
+    "region_mask.py": "38ad202914272e1fab5c1e02ad64b304c46f8c8c43487c93f013d0b5b4873524",
+    "character_builder.py": "8df835798e33c5dba73f880d539ebb522d439bd7d5f948cbe106d42963940118",
+    "pipe_compat.py": "a0b7ae5c98e82cc8a6dabe07206e872246b0c3da212829be117df5214cceee89",
+    "layout.py": "5e065f3398b99edf41ae2e7561c86272e7c95292d30e2a51281aaf0b8800911a",
+    "pose3d.py": "890fd1cde9eb0b3470ff0222baa086103b329ef75b02be51ab0c668226092cc5",
+    "mhr.py": "f7dde006e83daa758a17eaee81f73e2a3c22c0c5700274ce39e162c97153adc0",
+    "pose_import.py": "e03dc3c144394f408d5cf4138317311ee62faaf938ad850330cd1f5ab7866d82",
+    "pose_library.py": "e880142f9c0d97b5d659a310ac1d0191f5a60d4bf8ad332b084051df4ff64a25"
+  },
+  "web_assets": {
+    "web/pose3d/MHR-LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "web/pose3d/MHR-NOTICE.txt": "207ead33c50fdd99a87598b9ac748eb83ad06c221f3389b13cd756dc0dfbd180",
+    "web/pose3d/THREE-LICENSE.txt": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+    "web/pose3d/editor.bundle.mjs": "c0c5dea2baba7dd5cd453a324085b9bfced2f7b276aa8969a5639abf61bb9863",
+    "web/pose3d/editor.css": "b54a3d9d49949165681ae9dfc0fcf0abdeb00f7a0b349e478b9a739d1ae9f8ce",
+    "web/pose3d/editor.mjs": "01349336b22fd53e97707cdcd62d2a7791dbef586c6ef95079d2a34d698ef6e2",
+    "web/pose3d/image_scene.mjs": "fcf093cd80b828958c15f9f5c9c83a6c586b5f9b22c2aff88e05dd0dfb17708f",
+    "web/pose3d/index.html": "c922a9b60c11cc93d426af978b62f03235abc0f7b689e976d504e397645bde0d",
+    "web/pose3d/mhr-body.json.gz": "cc07e6cd297e069781e3b4274aa6267752fc6ac9384fb0f62937da1a469cbf19",
+    "web/pose3d/mhr.mjs": "70ad46ee626305fb6f7a310a814e2bd7dcd875c7950d318014392c9a46e79e54",
+    "web/pose3d/model.mjs": "740c603fc6c9c80d9dc332b9a370e56fa97289bf8af895b303c78948db4ae5b0"
+  },
+  "comfy_revision": "5cc4b870094c89090db54bd8d12649dcaf89f2ba",
+  "upstream_reference_commit": "721d57ab98e80dc6854d4f49758bc9c456bb925c",
+  "snapshot_note": "Copied from installed RS extension on 2026-11-07, including unpublished local pose import/library changes; upstream reference is not an exact snapshot revision. Per-file SHA-256 hashes identify bundled content.",
+  "extension_files": {
+    "rs_forge_mc/routing.py": "8e7b4294d1ca4af430aba61afc072943ef378e0a9dc6c095680afd1c4f445a57"
+  }
+}

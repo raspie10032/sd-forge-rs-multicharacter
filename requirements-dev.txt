@@ -1,0 +1,10 @@
+# Development checks only. Do not install these over a Forge environment.
+# Install PyTorch separately (CPU is sufficient for the unit tests).
+numpy==2.3.5
+fastapi==0.127.1
+pydantic==2.10.6
+httpx==0.28.1
+gradio==4.40.0
+huggingface-hub==0.36.2
+pytest==9.2.0
+ruff==0.17.4

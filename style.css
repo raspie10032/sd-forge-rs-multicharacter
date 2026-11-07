@@ -1,0 +1,39 @@
+.rs-mc-pose-dialog {width:96vw;height:94vh;max-width:1800px;max-height:100vh;padding:10px;background:#161b24;color:white;border:1px solid #485369;border-radius:10px;}
+.rs-mc-pose-dialog::backdrop {background:#000a;}
+.rs-mc-pose-dialog iframe {display:block;width:100%;height:calc(100% - 40px);border:0;}
+.rs-mc-pose-dialog button {padding:6px 16px;margin-bottom:5px;cursor:pointer;}
+
+.rs-mc-preview [data-rs-slot] {cursor:pointer;}
+.rs-mc-preview [role="button"]:hover circle, .rs-mc-preview [role="button"]:focus circle {stroke:white;stroke-width:2;}
+.rs-mc-character-list {display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:10px;margin:6px 0 12px;}
+.rs-mc-character-list button {font:inherit;text-align:left;border:1px solid var(--border-color-primary,#485369);border-radius:10px;padding:12px 14px;cursor:pointer;color:var(--body-text-color,#e5e7eb);background:var(--block-background-fill,#20232b);}
+.rs-mc-character-list .rs-mc-character-open {border-left:4px solid var(--rs-mc-accent);display:flex;flex-direction:column;gap:5px;min-width:0;}
+.rs-mc-character-list button[hidden], .rs-mc-character-backdrop[hidden] {display:none!important;}
+.rs-mc-character-list button:hover {border-color:var(--rs-mc-accent,#a6b5cf);box-shadow:0 2px 10px #0002;}
+.rs-mc-character-list button:focus-visible, .rs-mc-character-editor button:focus-visible {outline:2px solid #8caeff;outline-offset:3px;}
+.rs-mc-character-summary {font-size:12px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;opacity:.8;}
+.rs-mc-character-lora {font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;opacity:.6;}
+.rs-mc-character-add {align-self:stretch;min-height:64px;text-align:center!important;border-style:dashed!important;}
+.rs-mc-character-add:disabled {opacity:.4;cursor:default;}
+.rs-mc-character-editor.rs-mc-ui-ready {display:none!important;}
+.rs-mc-character-editor.rs-mc-ui-ready.is-open {display:block!important;position:fixed!important;z-index:10001;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(760px,calc(100vw - 32px))!important;max-height:calc(100dvh - 40px);overflow:auto!important;overscroll-behavior:contain;padding:18px!important;background:var(--body-background-fill,#161b24)!important;color:var(--body-text-color,#e5e7eb);border:1px solid var(--border-color-primary,#485369)!important;border-radius:14px!important;box-shadow:0 24px 90px #0007;}
+.rs-mc-character-backdrop {position:fixed;inset:0;z-index:10000;background:#0009;backdrop-filter:blur(3px);}
+.rs-mc-character-editor.rs-mc-ui-ready [role="tablist"] {display:none!important;}
+.rs-mc-character-heading {display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:12px;}
+.rs-mc-character-heading h3 {font-size:20px!important;font-weight:650!important;margin:3px 0!important;}
+.rs-mc-eyebrow {font-size:11px;letter-spacing:.08em;opacity:.6;}
+.rs-mc-character-editor .rs-mc-character-close {font:inherit;cursor:pointer;padding:8px 16px;border-radius:8px;border:1px solid var(--border-color-primary,#485369);background:var(--button-secondary-background-fill,#303b50);color:var(--body-text-color,#e5e7eb);}
+.rs-mc-character-heading .rs-mc-character-close {padding:8px 12px;}
+.rs-mc-character-footer {display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;}
+.rs-mc-character-footer span {font-size:12px;opacity:.65;}
+.rs-mc-state {padding:10px 12px!important;border-radius:8px;border:1px solid #a8884c;background:#a8884c18;font-size:13px!important;}
+[data-rs-state="on"] .rs-mc-state {border-color:#54b59b;background:#54b59b18;}
+[id^="rs_mc_"][data-rs-state] > .label-wrap::after {content:"꺼짐";margin-left:8px;padding:2px 8px;border-radius:20px;font-size:11px;background:#a8884c2a;color:var(--body-text-color,#eee);}
+[id^="rs_mc_"][data-rs-state="on"] > .label-wrap::after {content:"사용 중";background:#54b59b35;}
+.rs-mc-preview-heading {display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;}
+.rs-mc-preview small {display:block;text-align:center;font-size:11px;opacity:.7;}
+.rs-mc-box-size[hidden] {display:none!important;}
+@media(max-width:600px) {
+    .rs-mc-character-editor.rs-mc-ui-ready.is-open {padding:12px!important;max-height:calc(100dvh - 20px);width:calc(100vw - 20px)!important;}
+    .rs-mc-character-heading h3 {font-size:17px!important;}
+}

@@ -1,0 +1,329 @@
+{
+  "kind": "tiny actual ComfyUI and Forge model classes; original routing and LoRA algebra",
+  "cases": [
+    {
+      "dtype": "torch.float32",
+      "layout": 0,
+      "mode": "precision",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 0,
+      "mode": "precision",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 0,
+      "mode": "precision",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 0,
+      "mode": "normal",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 0,
+      "mode": "normal",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 0,
+      "mode": "normal",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 1,
+      "mode": "precision",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 1,
+      "mode": "precision",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 1,
+      "mode": "precision",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 1,
+      "mode": "normal",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 1,
+      "mode": "normal",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 1,
+      "mode": "normal",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 2,
+      "mode": "precision",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 2,
+      "mode": "precision",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 2,
+      "mode": "precision",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 2,
+      "mode": "normal",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 2,
+      "mode": "normal",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.float32",
+      "layout": 2,
+      "mode": "normal",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 0,
+      "mode": "precision",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 0,
+      "mode": "precision",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 0,
+      "mode": "precision",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 0,
+      "mode": "normal",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 0,
+      "mode": "normal",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 0,
+      "mode": "normal",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 1,
+      "mode": "precision",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 1,
+      "mode": "precision",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 1,
+      "mode": "precision",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 1,
+      "mode": "normal",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 1,
+      "mode": "normal",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 1,
+      "mode": "normal",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 2,
+      "mode": "precision",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 2,
+      "mode": "precision",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 2,
+      "mode": "precision",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 2,
+      "mode": "normal",
+      "step": 0,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 2,
+      "mode": "normal",
+      "step": 3,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    },
+    {
+      "dtype": "torch.bfloat16",
+      "layout": 2,
+      "mode": "normal",
+      "step": 8,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_rmse": 0.0
+    }
+  ]
+}

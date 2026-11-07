@@ -1,0 +1,12 @@
+/* SPDX-License-Identifier: GPL-3.0-only */
+main {height:calc(100dvh - 70px);}
+#image-drop[hidden] {display:none!important;}
+.forge-pose-notice {border:1px solid #617184;border-radius:6px;padding:8px;background:#ffffff08;}
+.forge-pose-footer {position:fixed;bottom:0;left:0;right:0;height:70px;padding:10px 14px;display:flex;align-items:center;gap:16px;background:#202833;border-top:1px solid #54657a;z-index:10;}
+.forge-pose-footer #apply {width:auto;min-width:180px;flex:none;margin:0;padding:10px 18px;}
+.forge-pose-footer #status {margin:0;max-height:48px;overflow:auto;}
+@media(max-width:650px) {
+    aside {width:240px;padding:10px;}
+    .forge-pose-footer {gap:8px;padding:8px;}
+    .forge-pose-footer #apply {min-width:150px;padding:10px;}
+}
