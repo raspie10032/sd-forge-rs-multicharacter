@@ -112,6 +112,7 @@ function Assert-RsMcChecksum([string]$Archive, [string]$Checksums, [string]$Asse
 }
 
 function Expand-RsMcArchive([string]$Archive, [string]$Destination) {
+    Add-Type -AssemblyName System.IO.Compression
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $zip = [IO.Compression.ZipFile]::OpenRead($Archive)
     try {

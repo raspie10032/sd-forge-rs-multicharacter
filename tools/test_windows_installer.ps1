@@ -40,7 +40,8 @@ function New-ReleaseZip([string]$Path, [hashtable]$Entries) {
     } finally { $zip.Dispose() }
 }
 
-Add-Type -AssemblyName System.IO.Compression.FileSystem
+    Add-Type -AssemblyName System.IO.Compression
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
 $temp = Join-Path ([IO.Path]::GetTempPath()) ('rs-mc-test-' + [guid]::NewGuid().ToString('N').Substring(0, 8))
 [IO.Directory]::CreateDirectory($temp) | Out-Null
 try {
