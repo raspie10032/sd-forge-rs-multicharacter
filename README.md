@@ -52,6 +52,7 @@ The **3D editor** supports joint/finger editing, JSON/BVH/ZIP pose import, local
 | txt2img, img2img, Hires.fix | Tested |
 | JSON presets and PNG setting restoration | Included |
 | App Mode | Not included |
+| Character-specific negatives, body-part prompt masks / emphasis | Not ported |
 | Painted / external masks, dedicated interaction / camera conditioning | Not ported |
 | Character image reference, learned pose adapter, image → 3D estimation | Not ported |
 | Detailer, tagger, progressive-resolution sampler, text regions, RS NAI pipes | Not ported |

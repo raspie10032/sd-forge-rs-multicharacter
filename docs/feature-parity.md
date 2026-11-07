@@ -5,6 +5,7 @@ Audited 2026-11-07 against the installed ComfyUI RS MultiCharacter Sampler sourc
 | Original capability / 원본 기능 | Forge status / 상태 | Scope / 범위 |
 | --- | --- | --- |
 | Shared scene and numbered character prompts | Included | Up to 10 slots; actual count is model-dependent |
+| Character-specific negative prompts | Not ported | Use the shared Forge Negative field |
 | Character pipeline assembly and validation | Reused | Original BuildPipe / Finalize / CharacterPipe; Gradio presentation |
 | Point / Box placement | Included | Original overlap priority and edge smoothing |
 | Regional cross-attention / self-attention separation | Included | Original routing and schedule |
@@ -14,6 +15,7 @@ Audited 2026-11-07 against the installed ComfyUI RS MultiCharacter Sampler sourc
 | GGUF / native quantization interoperability | Outside support scope | Original loader/adapter coverage is not claimed |
 | 3D joint / finger / mannequin editing | Included | Original assets plus Forge presentation adapter |
 | 3D camera, full/visible silhouette regions | Included | Mask projection; not camera conditioning |
+| Body-part prompt masks / emphasis | Not ported | Current 3D path supplies whole-character silhouettes |
 | Pose library save / random / JSON export | Included | Forge models/rs_pose3d/ |
 | JSON / OpenPose / DWPose / Yu Zhu / named BVH / ZIP import | Included via 3D editor | 2D input cannot recover true depth |
 | Arbitrary painted numbered masks / external masks | Not ported | Custom-mask UI currently uses 3D silhouettes |
