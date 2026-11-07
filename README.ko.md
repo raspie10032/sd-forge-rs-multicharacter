@@ -1,6 +1,8 @@
 # RS MultiCharacter for Forge Neo
 
-[English](README.md) · [기능 비교](docs/feature-parity.md) · [검증 기록](docs/validation.md)
+**한국어** · [English](README.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
+
+**[사용자 가이드: 설치부터 2인 예제·전체 기능 조작까지](docs/user-guide.ko.md)** · [기능 비교](docs/feature-parity.md) · [검증 기록](docs/validation.md)
 
 **Forge Neo에서 캐릭터별 프롬프트·영역·LoRA·이미지 참조를 조합하는 확장**입니다. [ComfyUI 원본](https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler)의 영역 attention과 기능 모듈을 Forge 실행부에 연결했습니다.
 

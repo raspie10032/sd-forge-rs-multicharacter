@@ -1,6 +1,8 @@
 # RS MultiCharacter for Forge Neo
 
-[한국어](README.ko.md) · [Feature matrix](docs/feature-parity.md) · [Validation](docs/validation.md)
+[한국어](README.ko.md) · **English** · [日本語](README.ja.md) · [简体中文](README.zh-CN.md)
+
+**[User guide: installation, a two-character walkthrough and all feature controls](docs/user-guide.md)** · [Feature matrix](docs/feature-parity.md) · [Validation](docs/validation.md)
 
 Regional character prompts, masks, LoRAs, references and pose controls for Forge Neo, based on [ComfyUI RS MultiCharacter Sampler](https://github.com/raspie10032/ComfyUI_RS_MultiCharacter_Sampler).
 
