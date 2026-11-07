@@ -96,9 +96,13 @@ function Save-RsMcDownload([string]$Url, [string]$Destination) {
     if ($Url -notmatch '^https://github\.com/raspie10032/sd-forge-rs-multicharacter/releases/download/') {
         throw 'Unexpected release download URL.'
     }
-    Invoke-WebRequest -Uri $Url -OutFile $Destination -UseBasicParsing -Headers @{
-        'User-Agent' = 'RS-MultiCharacter-Windows-Installer'
-    }
+    # The PS 5.1 OutFile provider mishandles literal paths containing brackets.
+    # .NET receives the file path unchanged, including Unicode and punctuation.
+    $client = New-Object Net.WebClient
+    try {
+        $client.Headers['User-Agent'] = 'RS-MultiCharacter-Windows-Installer'
+        $client.DownloadFile($Url, $Destination)
+    } finally { $client.Dispose() }
 }
 
 function Assert-RsMcChecksum([string]$Archive, [string]$Checksums, [string]$AssetName) {
