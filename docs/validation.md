@@ -1,3 +1,17 @@
+# Validation for 0.2.0a2: Windows installer and guides
+
+Recorded 2026-11-07. This release adds a standalone Windows BAT installer and the Korean, English, Japanese and Simplified Chinese setup/user guides. The generation runtime is unchanged from 0.2.0a1.
+
+- **37 installer checks on a GitHub-hosted Windows runner, using Windows PowerShell 5.1.** The actual BAT downloaded a published GitHub release, verified its SHA-256, extracted it and installed it into a temporary Forge-shaped directory. This is not a Windows Forge generation test.
+- New installation, complete previous-extension/Git backup, update, rollback after a failed replacement, preservation of Forge settings/models/reference/pose files and other extensions, and removal of temporary files.
+- Portable `webui` discovery; Unicode, spaces, brackets and shell punctuation in paths; latest usable alpha selection; checksum failure and invalid ZIP rejection.
+- Both mocked process inventory and a real harmless `python.exe launch.py` process checked that a running WebUI blocks installation. No Forge or GPU was launched by these checks.
+- Single-file BAT matches its PowerShell source. Local PowerShell 7 ran the **32 non-Windows-specific checks**. Existing runtime CI checks remain required.
+
+The folder-picker UI and interactive double-click flow have not been manually exercised on a Windows desktop. Runtime/GPU compatibility and optional feature dependencies retain the limits below. The BAT installs the extension, not Forge, checkpoints or optional packages.
+
+---
+
 # Validation for 0.2.0a1
 
 Recorded 2026-11-07. [Compact full-port report](validation/full-port-0.2.json) separates execution evidence from quality and untested combinations. Earlier a5 experiments follow below.
