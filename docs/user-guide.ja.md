@@ -27,16 +27,51 @@
 
 **Forge Neo** 用の拡張機能です。検証済みホストは Linux/Python 3.12 上の neo-2.31、コミット `4f4284b02a5c814b81c328c64ed7e99a139f21ef` です。他のリビジョンや OS は、このリリースでは未検証です。
 
-1. **Extensions → Install from URL** を開きます。
-2. 下の URL を入力してインストールします。
-3. Forge を再起動し、ブラウザーを再読み込みします。
-4. txt2img または img2img にある **RS MultiCharacter · Forge Neo** を探します。
+### インストール前の準備
+
+Forge Neo がない場合は、先に [Forge Neo 公式のインストール手順](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation)に従って導入します。チェックポイントと対応するエンコーダー・VAE を準備し、拡張機能を入れる前に Forge 単体で通常の画像を生成できることを確認します。必要なファイルは [Forge 公式モデル案内](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models)を参照してください。
+
+下の **URL・Git・ZIP のいずれか1つ**で導入します。Forge フォルダーは `launch.py` と `extensions/` がある場所です。ComfyUI の `custom_nodes/` には入れません。
+
+### 方法 A：WebUI で URL からインストール
+
+1. Forge Neo で **Extensions → Install from URL** を開きます。
+2. **URL for extension's git repository** に下の URL を貼り付けます。
+3. **Specific branch name** と **Local directory name** は空欄のまま、**Install** を押します。
+4. 完了後、**Extensions → Installed** で `sd-forge-rs-multicharacter` が有効になっていることを確認します。
+5. **Apply and restart UI** を押します。**Apply and quit** と表示される場合は、終了後に普段のランチャーで Forge を起動し直します。ブラウザーも再読み込みします。
 
 ```text
 https://github.com/raspie10032/sd-forge-rs-multicharacter
 ```
 
-[リリース ZIP](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases) を使う場合は、`extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py` が存在する構成で展開します。拡張フォルダーを二重にしないでください。更新は **Extensions → Installed** の更新操作で行い、Forge を再起動します。古い UI が残る場合はブラウザーを強制再読み込みします。更新前にプリセットを保存してください。
+### 方法 B：Git でインストール
+
+Git が使える環境で Forge を終了し、**Forge フォルダー内で**次を実行してから、通常どおり起動します。URL 方式と同じ Git 管理のインストールになります。
+
+```bash
+git clone https://github.com/raspie10032/sd-forge-rs-multicharacter.git extensions/sd-forge-rs-multicharacter
+```
+
+### 方法 C：ZIP でインストール
+
+1. Forge を終了し、[Releases](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases) から必要なバージョンの拡張 ZIP を取得します。
+2. Forge の `extensions/` に展開し、拡張フォルダー名を `sd-forge-rs-multicharacter` にします。
+3. 下のファイルを確認してから Forge を起動します。拡張フォルダーを二重にしないでください。
+
+```text
+<Forge フォルダー>/extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py
+```
+
+`scripts/` と同じ階層に `rs_forge_mc/`、`javascript/` も必要です。
+
+### 導入確認と更新
+
+txt2img または img2img の **RS MultiCharacter · Forge Neo** を開き、**멀티캐릭터 사용** をオンにして **캐릭터 1 (프롬프트 입력)** を押します。フローティング入力画面が開けば UI は読み込まれています。[2節の2人例](#quick-start)で実際の生成も確認してください。
+
+URL・Git 方式の更新は **Extensions → Installed → Check for updates** で対象の拡張機能を選び、適用・再起動します。ZIP 方式は Git 更新に対応しないため、Forge を終了して新しい ZIP の拡張フォルダーに置き換えます。更新前に JSON プリセットと手動で変更したファイルを別途保存してください。古い UI が残る場合は **Ctrl+Shift+R** で強制再読み込みします。
+
+パネルが出ない場合は、フォルダーの二重化、Installed の有効状態、Forge の起動ターミナルに出る拡張読み込みエラーを確認します。参照・ディテイラーで依存関係の不足が表示されたら、[13節](#models)の該当パッケージだけを **Forge が使う Python** で導入し、再起動します。
 
 基本生成に追加パッケージは不要です。追加機能の重みは、その機能を実行するときに準備します。起動だけではダウンロードしません。チェックポイント、エンコーダー、VAE、LoRA の重みは同梱していません。
 

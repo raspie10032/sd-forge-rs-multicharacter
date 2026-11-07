@@ -27,16 +27,51 @@
 
 **Forge Neo**용 확장입니다. 검증한 호스트는 Linux/Python 3.12의 neo-2.31, 커밋 `4f4284b02a5c814b81c328c64ed7e99a139f21ef`입니다. 다른 버전·OS는 이번 릴리스에서 검증하지 않았습니다.
 
-1. **Extensions → Install from URL**을 엽니다.
-2. 아래 주소를 넣고 설치합니다.
-3. Forge를 재시작하고 브라우저를 새로고침합니다.
-4. txt2img 또는 img2img에서 **RS MultiCharacter · Forge Neo** 패널을 찾습니다.
+### 설치 전 준비
+
+Forge Neo가 없다면 먼저 [Forge Neo 공식 설치 안내](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation)를 따라 설치합니다. 사용할 체크포인트와 맞는 인코더·VAE를 준비하고 Forge 자체에서 일반 이미지 한 장이 생성되는지 확인합니다. 모델별 파일은 [Forge 공식 모델 안내](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models)를 참고하세요.
+
+아래 **URL·Git·ZIP 중 한 가지 방법**으로 설치합니다. Forge 폴더는 `launch.py`와 `extensions/`가 있는 폴더입니다. 이 확장은 ComfyUI의 `custom_nodes/`에 넣지 않습니다.
+
+### 방법 A: WebUI에서 URL로 설치
+
+1. Forge Neo에서 **Extensions → Install from URL**을 엽니다.
+2. **URL for extension's git repository**에 아래 주소를 붙여넣습니다.
+3. **Specific branch name**, **Local directory name**은 비워두고 **Install**을 누릅니다.
+4. 완료되면 **Extensions → Installed**에서 `sd-forge-rs-multicharacter`가 활성화되어 있는지 확인합니다.
+5. **Apply and restart UI**를 누릅니다. **Apply and quit**으로 표시되는 환경은 종료 후 평소 실행기로 Forge를 다시 켭니다. 브라우저도 새로고침합니다.
 
 ```text
 https://github.com/raspie10032/sd-forge-rs-multicharacter
 ```
 
-[릴리스 ZIP](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases)으로 설치할 때는 `extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py`가 있어야 합니다. 확장 폴더가 한 번 더 중첩되지 않게 풉니다. 업데이트는 **Extensions → Installed**의 업데이트 기능을 이용한 뒤 Forge를 재시작합니다. 이전 UI가 보이면 브라우저를 강력 새로고침합니다. 업데이트 전 프리셋은 따로 보관하세요.
+### 방법 B: Git으로 설치
+
+Git이 있는 환경에서 Forge를 종료하고 **Forge 폴더에서** 실행한 뒤 평소처럼 다시 켭니다. URL 설치와 같은 Git 설치본이 만들어집니다.
+
+```bash
+git clone https://github.com/raspie10032/sd-forge-rs-multicharacter.git extensions/sd-forge-rs-multicharacter
+```
+
+### 방법 C: ZIP으로 설치
+
+1. Forge를 종료하고 [Releases](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases)에서 원하는 버전의 확장 ZIP을 받습니다.
+2. Forge의 `extensions/` 아래에 풀고, 확장 폴더 이름을 `sd-forge-rs-multicharacter`로 맞춥니다.
+3. 아래 파일이 있는지 확인한 뒤 Forge를 다시 켭니다. 확장 폴더가 한 번 더 중첩되면 안 됩니다.
+
+```text
+<Forge 폴더>/extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py
+```
+
+`scripts/`와 나란히 `rs_forge_mc/`, `javascript/` 폴더도 있어야 합니다.
+
+### 설치 확인과 업데이트
+
+txt2img 또는 img2img에서 **RS MultiCharacter · Forge Neo** 패널을 열고 **멀티캐릭터 사용**을 켠 뒤 **캐릭터 1 (프롬프트 입력)**을 누릅니다. 플로팅 입력창이 열리면 UI가 로드된 것입니다. [2절의 2인 예제](#quick-start)로 실제 생성도 확인하세요.
+
+URL·Git 설치본은 **Extensions → Installed → Check for updates**에서 이 확장을 선택해 적용·재시작합니다. ZIP 설치본은 Git 업데이트 대상이 아니므로 Forge를 종료하고 새 ZIP의 확장 폴더로 교체합니다. 업데이트 전 JSON 프리셋과 직접 수정한 파일은 따로 보관하세요. 이전 UI가 남으면 **Ctrl+Shift+R**로 강력 새로고침합니다.
+
+패널이 없으면 폴더 중첩, Installed의 활성화 상태, Forge 실행 터미널의 확장 로드 오류를 확인합니다. 참조·디테일러에서 의존성 누락 안내가 나오면 [13절](#models)의 해당 패키지만 **Forge가 사용하는 Python**으로 설치하고 재시작합니다.
 
 기본 생성에는 추가 패키지가 필요 없습니다. 선택 기능에 필요한 가중치는 해당 기능을 실행할 때 준비하며, 기동만으로 내려받지 않습니다. 체크포인트·인코더·VAE·LoRA 가중치는 배포본에 포함하지 않습니다.
 

@@ -27,16 +27,51 @@ For **0.2.0a1 (alpha)**. This guide follows the shipped interface. Most extensio
 
 Use **Forge Neo**. The tested host is neo-2.31, commit `4f4284b02a5c814b81c328c64ed7e99a139f21ef`, on Linux/Python 3.12. Other revisions and operating systems have not been validated in this release.
 
-1. Open **Extensions → Install from URL**.
-2. Enter the repository URL below and install.
-3. Restart Forge and reload the browser page.
-4. In txt2img or img2img, find **RS MultiCharacter · Forge Neo**.
+### Before installing
+
+If you do not have Forge Neo, follow its [official installation instructions](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation) first. Prepare a checkpoint with its matching text encoder and VAE, and confirm that Forge can generate a normal image before adding the extension. See Forge's [model download guide](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models) for each model's required files.
+
+Choose **one of URL, Git or ZIP installation** below. The Forge directory contains `launch.py` and `extensions/`. Do not install this extension in ComfyUI's `custom_nodes/`.
+
+### Method A: Install by URL in the WebUI
+
+1. In Forge Neo, open **Extensions → Install from URL**.
+2. Paste the URL below into **URL for extension's git repository**.
+3. Leave **Specific branch name** and **Local directory name** empty, then click **Install**.
+4. When installation finishes, open **Extensions → Installed** and check that `sd-forge-rs-multicharacter` is enabled.
+5. Click **Apply and restart UI**. If it reads **Apply and quit**, start Forge again with your usual launcher after it exits. Reload the browser page too.
 
 ```text
 https://github.com/raspie10032/sd-forge-rs-multicharacter
 ```
 
-For a ZIP installation, extract the [release archive](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases) so that `extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py` exists. Avoid an extra nested extension folder. For updates, use Forge's **Extensions → Installed** update controls, restart Forge, then hard-refresh the browser if old controls remain. Keep your presets before updating.
+### Method B: Install with Git
+
+With Git available, close Forge, run this **from the Forge directory**, then start Forge as usual. This creates the same Git-based installation as the URL method.
+
+```bash
+git clone https://github.com/raspie10032/sd-forge-rs-multicharacter.git extensions/sd-forge-rs-multicharacter
+```
+
+### Method C: Install a ZIP
+
+1. Close Forge and download the extension ZIP for your chosen version from [Releases](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases).
+2. Extract it under Forge's `extensions/`, naming the extension folder `sd-forge-rs-multicharacter`.
+3. Check that the file below exists, then start Forge. Avoid an extra nested extension folder.
+
+```text
+<Forge directory>/extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py
+```
+
+The `rs_forge_mc/` and `javascript/` folders must be beside `scripts/` too.
+
+### Verify installation and update
+
+In txt2img or img2img, expand **RS MultiCharacter · Forge Neo**, enable **멀티캐릭터 사용**, and click **캐릭터 1 (프롬프트 입력)**. An opening floating editor confirms that the interface loaded. Also generate the [two-character example in section 2](#quick-start) to check the generation path.
+
+For URL/Git installations, use **Extensions → Installed → Check for updates**, select this extension's update, then apply and restart. ZIP installations cannot use Git updates: close Forge and replace the extension folder with the new ZIP's folder. Save JSON presets and any manually edited files separately before updating. If old controls remain, hard-refresh with **Ctrl+Shift+R**.
+
+If the panel is missing, check folder nesting, its enabled state under Installed, and extension loading errors in Forge's terminal. If a reference or detailer reports missing dependencies, install only the relevant packages from [section 13](#models) using **Forge's Python**, then restart.
 
 Basic sampling needs no additional extension-specific packages. Optional models are prepared when their feature runs; startup alone does not download weights. Model, encoder, VAE and LoRA weights are not bundled.
 

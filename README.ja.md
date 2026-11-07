@@ -1,5 +1,7 @@
 # RS MultiCharacter for Forge Neo
 
+**[インストール手順：URL・Git・ZIP、導入確認と更新](docs/user-guide.ja.md#install)**
+
 [한국어](README.ko.md) · [English](README.md) · **日本語** · [简体中文](README.zh-CN.md)
 
 **[ユーザーガイド：インストール・2人生成の練習・全機能の操作](docs/user-guide.ja.md)** · [機能比較](docs/feature-parity.md) · [検証記録](docs/validation.md)

@@ -27,16 +27,51 @@
 
 本扩展面向 **Forge Neo**。已验证的宿主为 Linux/Python 3.12 下的 neo-2.31，提交 `4f4284b02a5c814b81c328c64ed7e99a139f21ef`。其他版本及操作系统未在本次发布中验证。
 
-1. 打开 **Extensions → Install from URL**。
-2. 输入下方仓库地址并安装。
-3. 重启 Forge，刷新浏览器。
-4. 在 txt2img 或 img2img 中找到 **RS MultiCharacter · Forge Neo**。
+### 安装前准备
+
+如果尚未安装 Forge Neo，请先按照 [Forge Neo 官方安装说明](https://github.com/Haoming02/sd-webui-forge-classic/tree/neo#installation)完成安装。准备检查点及匹配的编码器和 VAE，并在安装扩展前确认 Forge 本身可以正常生成图片。各模型所需文件请参考 [Forge 官方模型指南](https://github.com/Haoming02/sd-webui-forge-classic/wiki/Download-Models)。
+
+在下方 **URL、Git、ZIP 三种方式中任选一种**。Forge 目录指包含 `launch.py` 和 `extensions/` 的目录；本扩展不应安装到 ComfyUI 的 `custom_nodes/` 中。
+
+### 方式 A：在 WebUI 中通过 URL 安装
+
+1. 在 Forge Neo 中打开 **Extensions → Install from URL**。
+2. 将下方地址粘贴到 **URL for extension's git repository**。
+3. **Specific branch name** 和 **Local directory name** 留空，点击 **Install**。
+4. 完成后在 **Extensions → Installed** 中确认 `sd-forge-rs-multicharacter` 已启用。
+5. 点击 **Apply and restart UI**。如果按钮显示为 **Apply and quit**，退出后用平时的启动器重新启动 Forge。也请刷新浏览器。
 
 ```text
 https://github.com/raspie10032/sd-forge-rs-multicharacter
 ```
 
-使用[发布 ZIP](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases) 时，确保解压后存在 `extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py`，避免多嵌套一层扩展目录。更新请使用 **Extensions → Installed** 中的更新功能，然后重启 Forge。仍显示旧界面时，强制刷新浏览器。更新前请保存预设。
+### 方式 B：使用 Git 安装
+
+在已安装 Git 的环境中，退出 Forge，**从 Forge 目录**执行以下命令，然后照常启动。此方式与 URL 安装一样，由 Git 管理扩展。
+
+```bash
+git clone https://github.com/raspie10032/sd-forge-rs-multicharacter.git extensions/sd-forge-rs-multicharacter
+```
+
+### 方式 C：使用 ZIP 安装
+
+1. 退出 Forge，从 [Releases](https://github.com/raspie10032/sd-forge-rs-multicharacter/releases) 下载所需版本的扩展 ZIP。
+2. 解压到 Forge 的 `extensions/` 下，将扩展目录命名为 `sd-forge-rs-multicharacter`。
+3. 确认下列文件存在，再启动 Forge。避免多嵌套一层扩展目录。
+
+```text
+<Forge 目录>/extensions/sd-forge-rs-multicharacter/scripts/rs_multicharacter.py
+```
+
+`scripts/` 同级还需包含 `rs_forge_mc/` 和 `javascript/`。
+
+### 确认安装与更新
+
+在 txt2img 或 img2img 中展开 **RS MultiCharacter · Forge Neo**，勾选 **멀티캐릭터 사용**，点击 **캐릭터 1 (프롬프트 입력)**。浮动输入窗口能打开，说明界面已加载。请再用[第 2 节的双人示例](#quick-start)确认实际生成。
+
+URL/Git 安装请使用 **Extensions → Installed → Check for updates**，选择本扩展的更新后应用并重启。ZIP 安装无法使用 Git 更新：请退出 Forge，用新版 ZIP 中的扩展目录替换旧目录。更新前另行保存 JSON 预设和手动修改的文件。仍显示旧界面时，使用 **Ctrl+Shift+R** 强制刷新。
+
+如果面板未出现，请检查目录嵌套、Installed 中的启用状态，以及 Forge 启动终端中的扩展加载错误。参考图或细节修复提示依赖缺失时，使用 **Forge 的 Python** 安装[第 13 节](#models)对应的依赖，然后重启。
 
 基础生成无需额外安装本扩展专用依赖。可选权重在运行对应功能时准备，仅启动不会下载。发布包不含检查点、编码器、VAE 或 LoRA 权重。
 
