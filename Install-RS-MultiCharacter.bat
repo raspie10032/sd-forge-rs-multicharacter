@@ -222,6 +222,7 @@ try {
 } catch {
     Write-Host ''
     Write-Host ('ERROR: ' + $_.Exception.Message) -ForegroundColor Red
+    Write-Host $_.InvocationInfo.PositionMessage
     Write-Host 'The installer does not change Forge launch options, Python packages, models or GPU selection.'
     exit 1
 } finally {
