@@ -1,0 +1,64 @@
+{
+  "folder_sam": {
+    "images": [
+      {
+        "file": "sample.png.rs-detail.png",
+        "regions": [
+          {
+            "region": 0,
+            "bbox": [
+              504,
+              345,
+              748,
+              590
+            ],
+            "character": 0,
+            "score": 1.0,
+            "margin": 1.0,
+            "reason": "single_character",
+            "edited": true
+          }
+        ]
+      }
+    ]
+  },
+  "WD ViT v3": {
+    "tags": {
+      "1girl": 0.9823867082595825,
+      "solo": 0.4622999429702759,
+      "long_hair": 0.8810371160507202,
+      "blush": 0.6633036136627197,
+      "smile": 0.8537992835044861,
+      "skirt": 0.566909909248352,
+      "long_sleeves": 0.6844133734703064,
+      "holding": 0.9259278178215027,
+      "closed_mouth": 0.5828236937522888,
+      "green_eyes": 0.9412487149238586,
+      "braid": 0.9017888903617859,
+      "flower": 0.7653669118881226,
+      "outdoors": 0.7686212658882141,
+      "red_hair": 0.8540823459625244,
+      "solo_focus": 0.39482009410858154,
+      "scarf": 0.938156008720398,
+      "from_side": 0.6628643274307251,
+      "coat": 0.8782113194465637,
+      "single_braid": 0.5023636817932129,
+      "profile": 0.50343257188797,
+      "night": 0.4498443901538849,
+      "umbrella": 0.9644581079483032,
+      "plant": 0.5168042182922363,
+      "green_skirt": 0.7787815928459167,
+      "rain": 0.6549941301345825,
+      "braided_ponytail": 0.577251136302948,
+      "holding_umbrella": 0.8700342774391174,
+      "purple_flower": 0.7892398834228516,
+      "brown_coat": 0.540349006652832,
+      "transparent": 0.8883399963378906,
+      "purple_scarf": 0.8977267146110535,
+      "transparent_umbrella": 0.8277032971382141,
+      "emma_verde": 0.3913523852825165
+    },
+    "seconds": 1.09
+  },
+  "existing_output_guard": "400: Output already exists; no overwrite"
+}

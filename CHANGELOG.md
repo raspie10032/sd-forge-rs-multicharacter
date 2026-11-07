@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0a1 — 2026-11-07
+
+- Port the remaining original feature modules except App Mode and per-character negatives.
+- Add mask painting/import/transforms, body parts, interaction/camera conditions, text/layout tools and progressive sampling.
+- Add four Anima reference backends, native-family reference paths, learned pose, SAM 3D Body image estimation, detector/SAM detailers, WD/PixAI taggers and folder correction.
+- Add native-family runtime dispatch and extended native/additional adapter deltas, with explicit Precision fallback.
+- Preserve advanced state through presets/PNG and original RS/NAI metadata exchange.
+- Correct Forge VAE latent-format conversion for references and learned pose; retain Comfy Anima arithmetic parity.
+- Fix preview division by zero while dimensions are retyped.
+- Separate implementation coverage from actual-checkpoint and small-model validation.
+
 ## 0.1.0a5 — 2026-11-07
 
 First public Forge Neo alpha targeting Anima 2B.

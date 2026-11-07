@@ -1,0 +1,6 @@
+# Optional: install with the Python used by Forge. Reuse its torch/torchvision.
+opencv-python>=4.8
+scipy>=1.11
+ultralytics>=8.3,<9
+segment-anything>=1.0
+timm>=1.0.3,<2

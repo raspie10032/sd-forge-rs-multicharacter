@@ -1,0 +1,3 @@
+# Optional alternative tagger. Transformers 5 must also work with your Forge.
+-r requirements-detailer.txt
+transformers>=5,<6

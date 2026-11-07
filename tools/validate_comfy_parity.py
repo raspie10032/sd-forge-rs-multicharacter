@@ -23,6 +23,9 @@ parser.add_argument('--forge', type=Path, required=True)
 parser.add_argument('--output', type=Path, required=True)
 parser.add_argument('--capture', type=Path)
 parser.add_argument('--device', default='cpu')
+parser.add_argument('--allow-live-output-drift', action='store_true',
+                    help='Report, without asserting, a saved output from a different GPU/kernel. '
+                         'The same-device ComfyUI versus Forge comparison remains strict.')
 args = parser.parse_args()
 sys.path[:0] = [str(args.comfy), str(args.forge), str(Path(__file__).resolve().parents[1])]
 sys.argv = [sys.argv[0], '--cpu']
@@ -34,7 +37,12 @@ from backend.operations import using_forge_operations  # noqa: E402
 from modules_forge.packages.comfy.weight_adapter.lora import LoRAAdapter  # noqa: E402
 from rs_forge_mc.config import Config, Character, Settings  # noqa: E402
 from rs_forge_mc.lora import LoraPlan  # noqa: E402
-from rs_forge_mc.runtime import AnimaRuntime, text_tensor  # noqa: E402
+from rs_forge_mc.runtime import text_tensor  # noqa: E402
+from rs_forge_mc.native_runtime import NativeRuntime  # noqa: E402
+
+
+def AnimaRuntime(config, contexts, plans, x):
+    return NativeRuntime(config, contexts, plans, "Anima", size=(x.shape[-1] * 8, x.shape[-2] * 8))
 
 package = ModuleType('rs_comfy_reference')
 package.__path__ = [str(args.original)]
@@ -191,7 +199,7 @@ def tiny():
             for layout, config in enumerate(layouts):
                 for mode in ('precision', 'normal'):
                     config = replace(config, settings=Settings(lora_mode=mode))
-                    runtime = AnimaRuntime(config, contexts, plans)
+                    runtime = AnimaRuntime(config, contexts, plans, x)
                     for index in (0, 3, 8):
                         t = sigmas[index].expand(2)
                         c = dict(c_crossattn=base.to(dtype), transformer_options=dict(sigmas=t, sampling_sigmas=sigmas))
@@ -256,12 +264,13 @@ def replay():
             comfy_core.cpu()
             torch.cuda.empty_cache() if device.type == 'cuda' else None
             forge.to(device)
-            b = AnimaRuntime(cfg, data['contexts'], plans)(root.apply_model,
+            b = AnimaRuntime(cfg, data['contexts'], plans, x)(root.apply_model,
                 dict(input=x, timestep=t, c=c, cond_or_uncond=kinds))
             row = dict(mode=mode, **metrics(a,b))
             if mode == config.settings.lora_mode:
                 row['live_forge_vs_replay'] = metrics(data['output'].to(device),b)
-                torch.testing.assert_close(data['output'].to(device), b, rtol=2e-6, atol=2e-6)
+                if not args.allow_live_output_drift:
+                    torch.testing.assert_close(data['output'].to(device), b, rtol=2e-6, atol=2e-6)
             rows.append(row)
             print(json.dumps(row), flush=True)
             torch.testing.assert_close(a,b,rtol=2e-6,atol=2e-6)
@@ -271,7 +280,8 @@ def replay():
                 capture=str(args.capture), dtype=str(dtype), device=str(device),
                 latent_shape=list(x.shape), text_shapes=[list(base.shape), *[list(c.shape) for c in contexts]],
                 multiplier=data['multiplier'], cases=rows,
-                limits='Diffusion/region/LoRA parity with identical encoded text, latent, sigma and weights. Does not establish independent tokenization, RNG, sampler or VAE parity.')
+                live_output_strict=not args.allow_live_output_drift,
+                limits='Diffusion/region/LoRA parity with identical encoded text, latent, sigma and weights. Does not establish independent tokenization, RNG, sampler or VAE parity. Saved live-output drift is diagnostic when explicitly allowed for a different GPU/kernel.')
 
 
 if __name__ == '__main__':

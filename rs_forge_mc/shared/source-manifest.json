@@ -9,7 +9,68 @@
     "pose3d.py": "890fd1cde9eb0b3470ff0222baa086103b329ef75b02be51ab0c668226092cc5",
     "mhr.py": "f7dde006e83daa758a17eaee81f73e2a3c22c0c5700274ce39e162c97153adc0",
     "pose_import.py": "e03dc3c144394f408d5cf4138317311ee62faaf938ad850330cd1f5ab7866d82",
-    "pose_library.py": "e880142f9c0d97b5d659a310ac1d0191f5a60d4bf8ad332b084051df4ff64a25"
+    "pose_library.py": "e880142f9c0d97b5d659a310ac1d0191f5a60d4bf8ad332b084051df4ff64a25",
+    "nai_prompts.py": "a6109c88b529a271e0c43fc4b65f6a489693668806540192b45d6da320b8e9d3",
+    "flux_engine.py": "e91b31d8f2db752adf07ec3a15a680b18ac8d77dd381245665e9674b76dda542",
+    "adapter_formats.py": "d811f4c1353e39d981401e82311ce00941c9b9e8bf6e7fe94dc18f3a51c14675",
+    "detection_models.py": "4a42663d83b0092af26cd4554575b928f17ec03cf77d047352b55f776cdcda04",
+    "resolution_control.py": "ff95e6765ee59427b806b93b432d7b453556593be1760210df0b689a3266d491",
+    "image_utils.py": "00bc39c1a1d86041270edbcc864d1de810b9856e23e01536ddd598c3af47e940",
+    "anima_reference.py": "a2d5a3a532a92fae2376ec2e2ef4ebf8dfd3696616adddf4bdf7d93400bd9e1e",
+    "pose_nodes.py": "27a8651fcdb5ea1d157d3aa14283340304f8ef00dc2b027e7c3060be9fff3551",
+    "reference_image.py": "4603cd212de94995a95337acdd0a3234b6a35581ce2ebb0733dccc6a5fc72abd",
+    "anima_ref_v2.py": "b97fccb519ad2783c9fa7590051141b1d8633aa24d24ed901c13c604197a1e0e",
+    "pose_estimator.py": "4595442284e1ec1705e797fdb246bf2de3d909620d1409bba24169a35f9796be",
+    "tagger_progress.py": "e3842e9740e7ba328230fed4b823711764aaf6a607972477bc722d1c2b2d348b",
+    "detector_bundle.py": "277e96762f32085f369805402b3cc4fa7621b702b5b67cd1299300eed294e3bc",
+    "detection.py": "d987fb4d56312034490b32c79e89f31b864dce0a8cac975e865ef2659e54b346",
+    "wd_tagger.py": "179bbc683d07507edf3bcb86b3eb7d0ed9ea9f55c6d04bbff8caea2dec621807",
+    "krea_reference_backend.py": "1d0245f5cee29c14cfd48017a2a74f5e2ceed5959629bbec43ed822a62a2a3a7",
+    "image_reference.py": "fa5f1b584bdc23568bdb5fb553773f4c86bc74cdaeffacfeaf8b85c752874ca8",
+    "reference_assets.py": "e9bfca0b6b9871445fdba353921aa2a49b2846a6a5f03c4350dd5060e2fb9277",
+    "native_reference.py": "b6d0f1fa43f6f9a4fe539f6452f053d02794374ca9b2e88c91c40f544eec3c72",
+    "anima_role_kv.py": "fa248d37314a846c7119dc752fbe11b380d6733798948999969cdd91771d513b",
+    "camera_control.py": "92c9f1a3da7095eaffac4bf3c2019515936a828417a782bcee1d5c048f7c667f",
+    "reference_spatial.py": "2a1bba52a4ea71bb76af2b94d2cb950bac7ec875c7d27e91f2875a1fb271a4e8",
+    "krea_pose_backend.py": "4d94b1e659318f53a396745ef1aca9955acead9767372dbecad46d123d60281b",
+    "sd_resampler.py": "f651b8bfee690c988b202522aa4849f32271228ba49da873858ae44f3df4be8a",
+    "prompt_syntax.py": "f43482c236d636255f2fdae930d67d16826d2dfe7945f68e0d7f8df20f16aaf3",
+    "camera_layout.py": "6c7b177809f9bc7acab4a3b3afdc7cdc310a3a5b04d1de206e2625e027a4ad7c",
+    "interaction.py": "0de373d8dc45c01c693e004e3c13c291422f021391aa2ebe5d9bfbf7ceb01d5e",
+    "pose_image.py": "735f73fb9390b1dd22b772882709d3cc1241bc8a372642e15dd62eaf6f83bac7",
+    "mask_repair.py": "65e711e96e4e767719b25779d75d7c8f408db991ac830d26a74f9bb8c91f24df",
+    "joint_engine.py": "0201db682d7cb2242abc01fc102c948fe913b498363580ed843ed5c091b67d3b",
+    "pose3d_node.py": "8bb20a4f9ec8c2b737056e3ff4881dc10fa6286484e64e1c59cf7d8361bce739",
+    "pose_parts.py": "8f31f32f10ff68fa1c9bd1ceaf8361fbb075b83e93ea1880068e4368fd5670de",
+    "pose_control_maps.py": "eaa3f30e0d9307fc4740e71e0ae59c2f3f440ea1cfcbabe62bde3d739a13fc89",
+    "pose_pipe.py": "ef53f4f84dc70f5f2f689506b1f40c8184c0aaefb44a86ff296953a89e0e00fb",
+    "anima_role_engine.py": "0491f6b8f62530055bba457b8d73ef7098ca1791c66bd2ba99c371668d4d1bfe",
+    "anima_role_native.py": "bfedbb8b7056f73d0b101165f2aaeca468142a901ee268d3f5e5fe9f4e765bca",
+    "detailer_matching.py": "9d4901e453127e3b222c7c7943c5a311c1f8e60dddfe2ca3b8c9889175bc1cfd",
+    "anima_ref_frame.py": "b6998b780b431aa7f654489c2579f87bc27f8e4606a435a5f79b9d7311688776",
+    "sdxl_engine.py": "a93b3e3fff073b30d2e01ac35132f0adb20da430e9931eba6b5a6b60927f00dd",
+    "sd_reference.py": "d1fb2b4de97c611a4a5cf12442c290a5224e29c8c273c0874a089ff355794f62",
+    "reference_assets.json": "c7943f4d1457e95ce3e6ceb3f9af76368f3ca32788d12a73ed25be51a44e55f8",
+    "detection_model_catalog.json": "56e205c0ba51c9fdac557b68de8c894ba18703a5a90254a8579f17e9fe552336",
+    "adapter_delta.py": "9d9f478098634abafb560554a186ec8e11c0ff8b22cee1431305e57d046e8b1d",
+    "detailer.py": "856b7fb08eb7f940f3442e57694c7db3bf2fe605fa483fe540ba3a2eecea9fbc",
+    "engine.py": "6c6e522a1cc4de847b7e756ef81b95a573766a315dc68eec2335fcf2f6f739ef",
+    "errors.py": "9536d738b83108ca7abc29d4353076b44533a7682a2091dfcf5c6b0924e5dde6",
+    "gguf_compat.py": "008f9298ffae230aedf957730e1c7588b3f1ea4fa5615e269128987e37cac1ef",
+    "lora_bypass.py": "20becfcf5a974da45c14cec8c11357cea9adc8d0b9b106ce907e60adbcd0ffbe",
+    "mask_drawing.py": "78f1a076a6d862d12e704856201e08fb66c15e6f6f717fa8e460a1d6bf730b46",
+    "metadata.py": "09bdda67b6ac028045498c42c7ed3b411b9a6d12f49ebc4747fe7b15e9aeda99",
+    "metadata_notice.py": "16e28018a0a1e40e2b5c39cf7e69a42c6c33e2c670ff90b9bef1584e91e206c7",
+    "nodes.py": "d57a1348f870513803c94f114f0459220d0ede41802f5451881f4f008c32e5a5",
+    "progressive.py": "f34bca67b3fb8bf72d5c659f076799872590cf45a2971e7f89ba73221e5e39d2",
+    "regional_lora.py": "b02a8188b60a6eb8b995beb97f303f0094591613c044219cac578579ccd10b74",
+    "routing.py": "8e7b4294d1ca4af430aba61afc072943ef378e0a9dc6c095680afd1c4f445a57",
+    "runtime_control.py": "aa8a15045b4f19c569a69d86b067a064a941e2c806d2905766684a92bf2248c2",
+    "shared_lora.py": "e5e572a03c24d85a19da9be00adf22581c40403baf4828fd33780c5ade11c8cb",
+    "anima_pose_control.py": "34098482ae44fadead162e39d8ea6288ecdf7f7e3fd2122597e29486cfbf331d",
+    "pose_adapter.py": "173980aaad605e690264a9bd4e36b913ee5f36528eb6945481d60e6f6aeeb7c0",
+    "app_catalog.py": "0c5384b2a6befd3ede88bbd81ef986f42fab8f2371c3ae9fd131633464bd7488",
+    "app_wildcards.py": "ae032c9ce6315cdf7cb9e2b2e6464f5057635fdf1c36a83b0f9e37701afb1d6d"
   },
   "web_assets": {
     "web/pose3d/MHR-LICENSE.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
@@ -29,5 +90,149 @@
   "snapshot_note": "Copied from installed RS extension on 2026-11-07, including unpublished local pose import/library changes; upstream reference is not an exact snapshot revision. Per-file SHA-256 hashes identify bundled content.",
   "extension_files": {
     "rs_forge_mc/routing.py": "8e7b4294d1ca4af430aba61afc072943ef378e0a9dc6c095680afd1c4f445a57"
+  },
+  "forge_import_adaptations": {
+    "reference_assets.py": "b96ec1e8fa268a39b314ee0add7535ed2ba0abb4f9ac309196543e1dea7b3a79",
+    "wd_tagger.py": "a6171d685991edc53aac98b9a2fb16321cb1e9cbc309c9c95ef92b79cdcd9fdc",
+    "detection_models.py": "4a4b68b82a9fad3ebada77b8d64a0ddcfcd3b90613fb7ca425cbe7a20ca57047",
+    "pose_estimator.py": "fba250214d1619a901f37cb80e4471a9d75f371d121aa1dd879b465a9d33ec37",
+    "anima_ref_frame.py": "318ac59fdbe6114d68822e56b646376afd7b3eb7099abd1e235ec4220f78b803",
+    "anima_ref_v2.py": "7f51205d81fff95c081b01e8d0125ab2ccc564e3c5c212306172e7bff656e565",
+    "anima_role_kv.py": "fff253324e80802d36d90d92717a9f6d25b5a35deb1087b530165e7d9cdd480c",
+    "anima_role_native.py": "bfedbb8b7056f73d0b101165f2aaeca468142a901ee268d3f5e5fe9f4e765bca",
+    "anima_reference.py": "a2d5a3a532a92fae2376ec2e2ef4ebf8dfd3696616adddf4bdf7d93400bd9e1e",
+    "krea_reference_backend.py": "c047a54c48cea33eac1579e9a48af0a2d6f58dd8828bbd24d33cb3aec329b1e8",
+    "krea_pose_backend.py": "ae82202a2c374c52929f01bb6496c6b87ddd71f2233fe74faa6ded2db445020d",
+    "native_reference.py": "90cc222c0e2fec19c8dab64ff4aa14237355bcc92e843e74b60e22569f73130c",
+    "sd_reference.py": "d1fb2b4de97c611a4a5cf12442c290a5224e29c8c273c0874a089ff355794f62",
+    "runtime_control.py": "e36ea176b186d6182e07439ce53785f2b6d6a29d2448c32385f662145b072f4e"
+  },
+  "forge_adaptations": {
+    "rs_forge_mc/shared/adapter_formats.py": {
+      "sha256": "ca32a97aa9860c0f33015f1e5ef8ef7a1eecc0fd7a4406fde66b3259bb0b9a48",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/detection_models.py": {
+      "sha256": "4a4b68b82a9fad3ebada77b8d64a0ddcfcd3b90613fb7ca425cbe7a20ca57047",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/anima_ref_v2.py": {
+      "sha256": "7f51205d81fff95c081b01e8d0125ab2ccc564e3c5c212306172e7bff656e565",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/pose_estimator.py": {
+      "sha256": "73a9a403538692c58327f1f190dbdde82c535ddc8eefcedfddf40c2dc23f501a",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/wd_tagger.py": {
+      "sha256": "237184f3842c9391ad70236f71d527f36dce1d453b102e04e32dc04609ac630e",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/krea_reference_backend.py": {
+      "sha256": "c047a54c48cea33eac1579e9a48af0a2d6f58dd8828bbd24d33cb3aec329b1e8",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/reference_assets.py": {
+      "sha256": "0b3ca8e8396433be3e810a9f816b7c39928d09bec272ed36b1138c0e55ff6ef8",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/native_reference.py": {
+      "sha256": "80c70585a0edae5839287357a0233223799724ed9a2b0b1618ad80a5a440642f",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/anima_role_kv.py": {
+      "sha256": "fff253324e80802d36d90d92717a9f6d25b5a35deb1087b530165e7d9cdd480c",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/krea_pose_backend.py": {
+      "sha256": "ae82202a2c374c52929f01bb6496c6b87ddd71f2233fe74faa6ded2db445020d",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/joint_engine.py": {
+      "sha256": "33f8fdf9d4c7c740a199473fb5c598e5a7312e33d3ed3017ad5b5b24e046a96f",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/anima_ref_frame.py": {
+      "sha256": "318ac59fdbe6114d68822e56b646376afd7b3eb7099abd1e235ec4220f78b803",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/engine.py": {
+      "sha256": "c6a77ef232468ca89f09e42c41bc560580edf9b35f6aad068a8fb79aa3aea72d",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/progressive.py": {
+      "sha256": "39d9b1eb532f2ed3c67f411f82fe7b67be87e5308d29a9dcd4f1730786bfce31",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/runtime_control.py": {
+      "sha256": "e36ea176b186d6182e07439ce53785f2b6d6a29d2448c32385f662145b072f4e",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/web/pose3d/editor.bundle.mjs": {
+      "sha256": "089cbb17013b15227b5e45175324fe73932dba735c095fd50857ee9c65719623",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/shared/web/pose3d/editor.mjs": {
+      "sha256": "05225352566526e1a385dd74fbf10299d9e6eda46207d40a55546193c65de634",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    },
+    "rs_forge_mc/routing.py": {
+      "sha256": "6840b17c2ffa275fcce5d4524fb6927cf5cef3c4dfb214978f8e92bf542e7e81",
+      "reason": "Forge host imports and native runtime hooks; editor image-estimation transport; formatting where applicable. Upstream source digest is retained above."
+    }
+  },
+  "additional_sources": {
+    "rs_forge_mc/vendor_sam3d/__init__.py": "b74f444fa49f1c19be314f7d145f068861d67910bcbf13e1ec6e2ecb8eefe21b",
+    "rs_forge_mc/vendor_sam3d/dino3.py": "64a801cfe27d7c4f53019bd22e2af9f94b77d4d2f9842bb1c9b47c327f5e5553",
+    "rs_forge_mc/vendor_sam3d/inference.py": "aad49b3c696f32c1ded5f91104a80c60f36195836a1e3a0c7479d2c1145a76e0",
+    "rs_forge_mc/vendor_sam3d/mhr/mhr_head.py": "fa657438c543b1492b01fcc22d5e631eae8c1c44d807371a7df4451957a40886",
+    "rs_forge_mc/vendor_sam3d/mhr/mhr_rig.py": "a0387533792356d07237493747d34e5bb922b753ea69a4cd4224ea2550990901",
+    "rs_forge_mc/vendor_sam3d/mhr/mhr_utils.py": "a635afb8da7c575be6d0c56bdaf4f742c91f6a34ba70edbc41a8c0ab76f76a83",
+    "rs_forge_mc/vendor_sam3d/model/camera_modules.py": "83691c0192b6c96747cb78e5e5e94b3ab8d7cdcd13c52b5dc7022f286b4aeef7",
+    "rs_forge_mc/vendor_sam3d/model/model.py": "b41e0887f8a00340ef8dd3b55fd725f90a4060ddf59b351a3d2824cf9348aa1c",
+    "rs_forge_mc/vendor_sam3d/model/prompt.py": "272ed871327c2d834b5a8ea98a851e055a27549994d8b007be716c577e50794e",
+    "rs_forge_mc/vendor_sam3d/model/transformer.py": "4f5a3cb409e680e14ad1cbc5fcbac05891ee5f23abbba1dd3fb8e78994d98003",
+    "rs_forge_mc/vendor_sam3d/utils.py": "5a8e284bf47b925d7649853d0ba9bb68a363f8bf76340759f77700102dfe4133",
+    "rs_forge_mc/anima_lllite.py": "e018e54f22bf2c8fd0d7987b696806f7c3c04702403f6b5e98b3c0052fe93bd2",
+    "rs_forge_mc/sam_support.py": "beb557ae5608ae337649f7623e284fc7a9ea51f66b4de641a273866ae8d7266f"
+  },
+  "adaptation_notes": "shared engine arithmetic is retained; selected imports, Forge Krea positive image context, inference host and editor transport are adapted explicitly. additional_sources derive from local ComfyUI comfy/ldm/sam3d_body and comfy/ldm/anima/lllite.py.",
+  "additional_source_origins": {
+    "rs_forge_mc/vendor_sam3d/inference.py": {
+      "source": "ComfyUI/comfy_extras/sam3d_body/utils.py",
+      "original_sha256": "4ea9c9a4bfffefad06e7514645af8726c656923d3f6a3daf26cdac1fc65851be"
+    },
+    "rs_forge_mc/vendor_sam3d/mhr/mhr_head.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/mhr/mhr_head.py",
+      "original_sha256": "d556456d7a60553e30ca3596bb2c9279738448dc54dcf697eb0a2e0092eda3b0"
+    },
+    "rs_forge_mc/vendor_sam3d/mhr/mhr_rig.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/mhr/mhr_rig.py",
+      "original_sha256": "e331e72aad6d7aa52d99e0e22d75fd27e40845eef521459915ea538489bdc34b"
+    },
+    "rs_forge_mc/vendor_sam3d/mhr/mhr_utils.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/mhr/mhr_utils.py",
+      "original_sha256": "1e28a71a3e77151bd9395042e4a0b37330c3e1114038190a62bdf3d75da76ad9"
+    },
+    "rs_forge_mc/vendor_sam3d/model/camera_modules.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/model/camera_modules.py",
+      "original_sha256": "5caa2af489521ab7a85cb851cfc43a90eb735076706c3bc1ee6bf90b89208c0e"
+    },
+    "rs_forge_mc/vendor_sam3d/model/model.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/model/model.py",
+      "original_sha256": "44908c31431cf826fc328479c116ca410bf22c838651e03fe009a7946d50ecff"
+    },
+    "rs_forge_mc/vendor_sam3d/model/prompt.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/model/prompt.py",
+      "original_sha256": "db863f4d3a1cb966ef8cb10be63fb9acd2c0cd678e676c48b3cebbeb21b12a76"
+    },
+    "rs_forge_mc/vendor_sam3d/model/transformer.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/model/transformer.py",
+      "original_sha256": "74a5423c4ff4fedcc22a21d0d405d1627e4603d34a9aa32048dad34c29f2f162"
+    },
+    "rs_forge_mc/vendor_sam3d/utils.py": {
+      "source": "ComfyUI/comfy/ldm/sam3d_body/utils.py",
+      "original_sha256": "286f89eeeae4e4a042c43b8d65ab506a0aa0ba2a584db9a668efa6f2b86e7945"
+    }
   }
 }

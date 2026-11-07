@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Forge Neo adapter: cloned patcher, scoped native Anima attention operations."""
+
 from contextlib import contextmanager, nullcontext
 import math
 import threading
@@ -8,8 +9,14 @@ import torch
 
 from .anima_math import comfy_math
 from .geometry import groups_for, membership, prediction_masks
-from .routing import (character_value_gain, hold_decay_spatial_separation, route_cross,
-                      sdpa, sigma_progress, stepped_common_weight)
+from .routing import (
+    character_value_gain,
+    hold_decay_spatial_separation,
+    route_cross,
+    sdpa,
+    sigma_progress,
+    stepped_common_weight,
+)
 
 RUNTIME_LOCK = threading.RLock()
 
@@ -38,9 +45,14 @@ def schedule_values(sigma, sigmas, settings):
         return settings.common_prior, settings.character_gain, settings.separation
     else:
         progress = sigma_progress(float(sigma), evaluations)
-    prior = stepped_common_weight(progress, len(evaluations), settings.common_prior, .2, .1)
-    separation = hold_decay_spatial_separation(progress, len(evaluations), settings.separation,
-                                              min(settings.hold_steps, len(evaluations)), settings.decay)
+    prior = stepped_common_weight(progress, len(evaluations), settings.common_prior, 0.2, 0.1)
+    separation = hold_decay_spatial_separation(
+        progress,
+        len(evaluations),
+        settings.separation,
+        min(settings.hold_steps, len(evaluations)),
+        settings.decay,
+    )
     return prior, character_value_gain(progress, settings.character_gain), separation
 
 
@@ -69,6 +81,7 @@ def attention_ops(model, cross, spatial):
 
 def validate_model(unet):
     from backend.nn.anima import Anima, SelfCrossAttention
+
     model = unet.model.diffusion_model
     if not isinstance(model, Anima):
         raise ValueError("RS MultiCharacter alpha supports Forge Neo Anima models only.")
@@ -103,6 +116,7 @@ class AnimaRuntime:
         self.audit["effective_lora_mode"] = "precision" if plans else "none"
         if plans and config.settings.lora_mode == "normal":
             from .shared_lora import SharedLora, SharedLoraUnsupported
+
             try:
                 self.shared_lora = SharedLora(plans, self.characters)
             except SharedLoraUnsupported as error:
@@ -117,6 +131,7 @@ class AnimaRuntime:
 
     def __call__(self, apply_model, args):
         from backend.args import dynamic_args
+
         if dynamic_args.ref_latents:
             raise ValueError("Disable Anima image references for RS MultiCharacter alpha.")
         with RUNTIME_LOCK:
@@ -125,6 +140,7 @@ class AnimaRuntime:
     def _forward(self, apply_model, args):
         model = apply_model.__self__.diffusion_model
         from backend.nn.anima import SelfCrossAttention
+
         if getattr(SelfCrossAttention.forward, "_couple", False):
             raise ValueError("Forge Couple and RS MultiCharacter cannot run together.")
         x, t, conditions = args["input"], args["timestep"], dict(args["c"])
@@ -144,7 +160,9 @@ class AnimaRuntime:
         if grid_key != self._grid_key:
             self._groups = groups_for(membership(self.characters, height, width, x.device, x.shape[-2:]))
             if self.plans:
-                self._prediction_weights = prediction_masks(self.characters, x.shape[-2], x.shape[-1], x.device)
+                self._prediction_weights = prediction_masks(
+                    self.characters, x.shape[-2], x.shape[-1], x.device
+                )
             self._grid_key = grid_key
             self.audit["grids"].append([height, width])
         groups = self._groups
@@ -152,7 +170,9 @@ class AnimaRuntime:
         if source is None:
             raise ValueError("Forge Neo did not supply sampling_sigmas; use a supported K-diffusion sampler.")
         if source is not self._schedule_source:
-            self._schedule = source.detach().cpu().tolist() if isinstance(source, torch.Tensor) else list(source)
+            self._schedule = (
+                source.detach().cpu().tolist() if isinstance(source, torch.Tensor) else list(source)
+            )
             self._schedule_source = source
         # Values come from sigma, not transformed Anima timesteps or a forward counter.
         sigma = options.get("sigmas", t).flatten()
@@ -162,9 +182,17 @@ class AnimaRuntime:
         base = text_tensor(conditions["c_crossattn"])
         if base.shape[0] != x.shape[0]:
             raise ValueError("Anima text and image batch sizes do not match.")
-        character_contexts = [torch.cat([c.to(base).expand(batch_size, -1, -1) if kind == 0 else
-                                         base.new_zeros((batch_size, c.shape[1], c.shape[2]))
-                                         for kind in kinds]) for c in self.contexts]
+        character_contexts = [
+            torch.cat(
+                [
+                    c.to(base).expand(batch_size, -1, -1)
+                    if kind == 0
+                    else base.new_zeros((batch_size, c.shape[1], c.shape[2]))
+                    for kind in kinds
+                ]
+            )
+            for c in self.contexts
+        ]
         if any(c.shape[-1] != base.shape[-1] for c in character_contexts):
             raise ValueError("Character text dimensions do not match the loaded Anima model.")
         lengths = [base.shape[1]] + [c.shape[1] for c in character_contexts]
@@ -174,8 +202,7 @@ class AnimaRuntime:
         def cross(q, k, v, transformer_options=None):
             if q.shape[1] != height * width:
                 raise ValueError("Unexpected Anima token grid (reference/tiling extension active?).")
-            return route_cross(q, k, v, groups, lengths, row_kinds,
-                               weights=(prior, 1.), character_gain=gain)
+            return route_cross(q, k, v, groups, lengths, row_kinds, weights=(prior, 1.0), character_gain=gain)
 
         # Keep the S×S bias limited to small query chunks to bound peak memory.
         # A chunk reads all image keys, so this preserves full self-attention.
@@ -185,7 +212,7 @@ class AnimaRuntime:
             result = q.new_empty((q.shape[0], q.shape[1], q.shape[2] * q.shape[3]))
             for start in range(0, q.shape[1], 256):
                 stop = min(start + 256, q.shape[1])
-                bias = q.new_full((stop-start, k.shape[1]), math.log1p(-separation))
+                bias = q.new_full((stop - start, k.shape[1]), math.log1p(-separation))
                 for group in groups:
                     rows = group[(group >= start) & (group < stop)] - start
                     bias[rows[:, None], group] = 0
@@ -197,21 +224,28 @@ class AnimaRuntime:
             return result
 
         self.audit["model_calls"] += 1
-        self.audit["last_schedule"] = {"common_prior": prior, "character_gain": gain, "separation": separation}
+        self.audit["last_schedule"] = {
+            "common_prior": prior,
+            "character_gain": gain,
+            "separation": separation,
+        }
         try:
             with comfy_math(model), attention_ops(model, cross, spatial):
                 if not self.plans:
                     self.audit["prediction_passes"] += 1
                     return apply_model(x, t, **conditions)
                 if self.shared_lora is not None:
-                    with self.shared_lora.installed(apply_model.__self__, self._prediction_weights,
-                                                    (height, width), lengths):
+                    with self.shared_lora.installed(
+                        apply_model.__self__, self._prediction_weights, (height, width), lengths
+                    ):
                         self.audit["prediction_passes"] += 1
                         return apply_model(x, t, **conditions)
                 result = torch.zeros_like(x, dtype=torch.float32)
                 for key, weight in self._prediction_weights:
                     plan = self.plans[key[0]] if key is not None else None
-                    context = plan.applied(apply_model.__self__, key[1]) if plan is not None else nullcontext()
+                    context = (
+                        plan.applied(apply_model.__self__, key[1]) if plan is not None else nullcontext()
+                    )
                     with context:
                         prediction = apply_model(x, t, **conditions)
                     result.add_(prediction.float() * weight[None, None, None])

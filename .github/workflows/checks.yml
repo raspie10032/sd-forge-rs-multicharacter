@@ -30,4 +30,5 @@ jobs:
         with:
           node-version: "22"
       - run: node --check javascript/rs_multicharacter.js
+      - run: node --check javascript/rs_features.js
       - run: node --check rs_forge_mc/web/pose-adapter.js

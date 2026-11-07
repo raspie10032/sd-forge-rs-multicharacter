@@ -2,10 +2,10 @@
 
 The panel assembles the original BuildPipe / Finalize / CharacterPipe and installs an execution-local Forge UnetPatcher wrapper.
 
-- shared/: unchanged character, region, 3D, import and pose-library modules from the installed original snapshot.
-- routing.py: unchanged original attention/schedule code.
+- shared/: original character/region/pose/reference/detailer/tagger modules, with documented host-import adaptations.
+- routing.py: original attention/schedule code with Forge Krea latent-reference compatibility.
 - geometry.py / shared_lora.py: original masks and Normal-mode algebra adapted to Forge.
-- runtime.py / lora.py / anima_math.py: model calls, local hooks, compatible Anima math and cleanup.
+- native_runtime.py / lora.py / adapter_delta.py / anima_math.py: native model calls, scoped hooks, native adapter deltas and compatible Anima math.
 - ui.py / api.py / javascript/ / web/: Forge forms, previews, pose API and presentation adapter.
 
 ## Local checks
@@ -20,6 +20,7 @@ python3.12 -m venv .venv
 .venv/bin/ruff check .
 GRADIO_ANALYTICS_ENABLED=False .venv/bin/python -m pytest -q
 node --check javascript/rs_multicharacter.js
+node --check javascript/rs_features.js
 node --check rs_forge_mc/web/pose-adapter.js
 ```
 
@@ -54,3 +55,6 @@ Three.js 0.170.0 / esbuild 0.25.12 are locked. Deliberate source changes require
 rs_forge_mc/shared/source-manifest.json records SHA-256 hashes of copied modules, editor assets and routing.py. The installed snapshot includes local pose-import/library work newer than inspected public source commit 721d57ab98e80dc6854d4f49758bc9c456bb925c; this is a reference commit, not an exact snapshot revision.
 
 The previously recorded 5cc4b870094c89090db54bd8d12649dcaf89f2ba is the enclosing ComfyUI checkout's revision, not the extension's. It is retained only as comfy_revision. Per-file hashes identify copied content.
+
+
+0.2 adds `features.py`, `advanced_ui.py`, `references.py`, `learned_pose.py`, `progressive.py`, `detail.py`, `folder_detail.py`, `assets.py`, and an adapted SAM 3D Body runtime. Optional weights/dependencies are loaded only on selected feature paths. `source-manifest.json` retains original hashes and separately records adapted hashes; it does not label modified modules as byte-identical upstream files.

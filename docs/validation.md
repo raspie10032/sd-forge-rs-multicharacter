@@ -1,4 +1,28 @@
-# Validation for 0.1.0a5
+# Validation for 0.2.0a1
+
+Recorded 2026-11-07. [Compact full-port report](validation/full-port-0.2.json) separates execution evidence from quality and untested combinations. Earlier a5 experiments follow below.
+
+## New checks
+
+- **39 unit tests**, Ruff, all three JavaScript syntax checks, and **95 source/assets** verification passed locally.
+- **RTX 5060 Ti**, selected by GPU UUID. No new diffusion inference was assigned to the 4070. WD/PixAI taggers and detector scoring use CPU. Browser auto-launch is disabled in both the test profile and the default Forge config.
+- Expanded native Anima runtime vs the actual original ComfyUI routing/LoRA implementation: **36 small-model cases, max error 0**. [Report](validation/parity-0.2-tiny.json).
+- Captured **trained Anima 2B** state/input at **1728×1152**, BF16, two LoRAs: **Normal and Precision, max error 0** on the 5060. [Report](validation/parity-0.2-real.json). The previously saved live output from the 4070 differs from this 5060 replay (max 0.03125). That cross-GPU/kernel measurement is diagnostic; the same-device original-vs-port comparison remains strict. Independent complete sampling/VAE/PNG identity is not established.
+- Small native forward calls and hook cleanup passed for **Anima, SD1.5, SDXL, Krea2, MOSS, FLUX1, FLUX2**. [Report](validation/native-families-0.2.json). These use small random weights, not trained checkpoints for those other families.
+- Actual **Anima 2B** generation executed camera/interaction, explicit masks, body parts, text, progressive resolution, learned pose, all four Anima reference methods, YOLO/SAM detailer and multi-character tag matching. No claim of improved appearance or exhaustive combinations follows from successful execution.
+- Folder detailer also passed after unloading the model, including lazy checkpoint loading, SAM segmentation, crop regeneration and output PNG/report. Existing output files were rejected without overwrite. [Folder/tagger record](validation/folder-tagger-0.2.json).
+- Actual **SAM 3D Body** converted a single-person crop to an editable 3D scene. WD ViT v3 and PixAI v1.0 returned actual local scores; PixAI is slow on CPU. SEGM/SAM choices depend on separately installed weights.
+- In Firefox: floating character editor, mask drawing/import/application, JSON/PNG import and restored mask margin. A **Generate button** run used 1728×1152, Euler a / SGM Uniform, 24 steps, CFG 4, seed 824201, with mask + camera + interaction + literal text + progressive enabled. The PNG restored all three configured slots and advanced settings; the remaining seven UI slots were disabled. Runtime recorded **24 calls and 24 restored calls**, through token grids 48×72 → 60×90 → 72×108.
+
+The combined high-resolution test produced an **additional person, duplicated gift boxes and unreadable sign text**. This is retained as a failed scene-quality case. Runtime/metadata success does not imply that the requested scene was followed.
+
+![Advanced character form with restored mask](images/advanced-character.png)
+
+Optional dependencies are lazy, with dedicated requirement files. Trained-checkpoint tests for other families, all extended adapter formats, quantized variants, every feature combination and paid NAI generation were not performed. NAI interoperability here is a settings bridge.
+
+---
+
+# Earlier validation for 0.1.0a5
 
 Recorded 2026-11-07. These are compact summaries of local experiments. Checkpoint weights, raw model captures and machine-specific paths are excluded.
 

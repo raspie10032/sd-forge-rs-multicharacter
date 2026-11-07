@@ -1,0 +1,501 @@
+{
+  "Anima": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      1,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "Anima",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "kinds": [
+            0,
+            1
+          ],
+          "text_lengths": [
+            9,
+            5,
+            7
+          ],
+          "cross_blocks": [
+            0,
+            1
+          ],
+          "self_blocks": [
+            0,
+            1
+          ],
+          "progress": 0.25,
+          "common_prior": 0.5,
+          "character_prior": 1.0,
+          "positive_common_blocked": false,
+          "character_value_gain": 1.0,
+          "common_tokens": 0,
+          "preserve_native_padding": true,
+          "spatial_separation": 0.2,
+          "token_grid": [
+            4,
+            4
+          ],
+          "exclusive_spatial_separation": null,
+          "self_bias_foreign": -0.2231435477733612,
+          "self_bias_own": 0.0
+        }
+      ],
+      "cross_calls": 2,
+      "self_calls": 2,
+      "restored_forwards": 1,
+      "token_grids": [],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 0,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none",
+      "grid_changes": [
+        {
+          "sigma": 0.800000011920929,
+          "grid": [
+            4,
+            4
+          ],
+          "canvas_tokens": 16,
+          "tokens_per_slot": [
+            8,
+            8
+          ],
+          "cells": [
+            {
+              "owners": [
+                0
+              ],
+              "tokens": 8,
+              "fraction": 0.5
+            },
+            {
+              "owners": [
+                1
+              ],
+              "tokens": 8,
+              "fraction": 0.5
+            }
+          ]
+        }
+      ],
+      "token_grid": [
+        4,
+        4
+      ],
+      "spatial_slots": 2,
+      "tokens_per_slot": [
+        8,
+        8
+      ]
+    }
+  },
+  "SD1.5": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "SD1.5",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "progress": 0.25,
+          "kinds": [
+            0,
+            1
+          ],
+          "text_lengths": [
+            9,
+            5,
+            7
+          ],
+          "common_prior": 0.5,
+          "character_value_gain": 1.0,
+          "spatial_separation": 0.2,
+          "exclusive_spatial_separation": null,
+          "resolution_separation": null,
+          "latent_grid": [
+            8,
+            8
+          ],
+          "cross_calls": 7,
+          "self_calls": 7
+        }
+      ],
+      "cross_calls": 7,
+      "self_calls": 7,
+      "restored_forwards": 1,
+      "token_grids": [
+        {
+          "height": 8,
+          "width": 8,
+          "tokens_per_slot": [
+            32,
+            32
+          ]
+        },
+        {
+          "height": 4,
+          "width": 4,
+          "tokens_per_slot": [
+            8,
+            8
+          ]
+        }
+      ],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 0,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none"
+    }
+  },
+  "SDXL": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "SDXL",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "progress": 0.25,
+          "kinds": [
+            0,
+            1
+          ],
+          "text_lengths": [
+            9,
+            5,
+            7
+          ],
+          "common_prior": 0.5,
+          "character_value_gain": 1.0,
+          "spatial_separation": 0.2,
+          "exclusive_spatial_separation": null,
+          "resolution_separation": null,
+          "latent_grid": [
+            8,
+            8
+          ],
+          "cross_calls": 7,
+          "self_calls": 7
+        }
+      ],
+      "cross_calls": 7,
+      "self_calls": 7,
+      "restored_forwards": 1,
+      "token_grids": [
+        {
+          "height": 8,
+          "width": 8,
+          "tokens_per_slot": [
+            32,
+            32
+          ]
+        },
+        {
+          "height": 4,
+          "width": 4,
+          "tokens_per_slot": [
+            8,
+            8
+          ]
+        }
+      ],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 0,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none"
+    }
+  },
+  "Krea2": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      1,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "Krea2",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "progress": 0.25,
+          "kinds": [
+            0,
+            1
+          ],
+          "common_prior": 0.5,
+          "character_value_gain": 1.0,
+          "spatial_separation": 0.2,
+          "joint_calls": 2,
+          "text_refiner_calls": 2,
+          "exclusive_spatial_separation": null,
+          "resolution_separation": null,
+          "token_grid": [
+            4,
+            4
+          ],
+          "latent_grid": [
+            8,
+            8
+          ],
+          "text_lengths": [
+            9,
+            5,
+            7
+          ]
+        }
+      ],
+      "cross_calls": 2,
+      "self_calls": 2,
+      "restored_forwards": 1,
+      "token_grids": [],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 2,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none",
+      "token_grid": [
+        4,
+        4
+      ],
+      "tokens_per_slot": [
+        8,
+        8
+      ]
+    }
+  },
+  "MOSS": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "MOSS",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "progress": 0.25,
+          "kinds": [
+            0,
+            1
+          ],
+          "common_prior": 0.5,
+          "character_value_gain": 1.0,
+          "spatial_separation": 0.2,
+          "joint_calls": 2,
+          "text_refiner_calls": 2,
+          "exclusive_spatial_separation": null,
+          "resolution_separation": null,
+          "token_grid": [
+            8,
+            8
+          ],
+          "latent_grid": [
+            8,
+            8
+          ],
+          "text_lengths": [
+            9,
+            5,
+            7
+          ],
+          "moss_text_positions": "independent_caption_tail_aligned"
+        }
+      ],
+      "cross_calls": 2,
+      "self_calls": 2,
+      "restored_forwards": 1,
+      "token_grids": [],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 2,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none",
+      "token_grid": [
+        8,
+        8
+      ],
+      "tokens_per_slot": [
+        32,
+        32
+      ]
+    }
+  },
+  "FLUX1": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "FLUX1",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "progress": 0.25,
+          "kinds": [
+            0,
+            1
+          ],
+          "common_prior": 0.5,
+          "character_value_gain": 1.0,
+          "spatial_separation": 0.2,
+          "joint_calls": 4,
+          "text_refiner_calls": 0,
+          "exclusive_spatial_separation": null,
+          "resolution_separation": null,
+          "token_grid": [
+            4,
+            4
+          ],
+          "latent_grid": [
+            8,
+            8
+          ],
+          "text_lengths": [
+            9,
+            5,
+            7
+          ]
+        }
+      ],
+      "cross_calls": 4,
+      "self_calls": 4,
+      "restored_forwards": 1,
+      "token_grids": [],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 0,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none",
+      "token_grid": [
+        4,
+        4
+      ],
+      "tokens_per_slot": [
+        8,
+        8
+      ]
+    }
+  },
+  "FLUX2": {
+    "passed": true,
+    "shape": [
+      2,
+      4,
+      8,
+      8
+    ],
+    "audit": {
+      "family": "FLUX2",
+      "model_calls": 1,
+      "prediction_passes": 1,
+      "restored_calls": 1,
+      "forwards": [
+        {
+          "sigma": 0.800000011920929,
+          "progress": 0.25,
+          "kinds": [
+            0,
+            1
+          ],
+          "common_prior": 0.5,
+          "character_value_gain": 1.0,
+          "spatial_separation": 0.2,
+          "joint_calls": 4,
+          "text_refiner_calls": 0,
+          "exclusive_spatial_separation": null,
+          "resolution_separation": null,
+          "token_grid": [
+            4,
+            4
+          ],
+          "latent_grid": [
+            8,
+            8
+          ],
+          "text_lengths": [
+            9,
+            512,
+            512
+          ]
+        }
+      ],
+      "cross_calls": 4,
+      "self_calls": 4,
+      "restored_forwards": 1,
+      "token_grids": [],
+      "grids": [],
+      "pose_parts": null,
+      "text_refiner_calls": 0,
+      "layout_method": "regional",
+      "regional_controls_applied": true,
+      "requested_lora_mode": "precision",
+      "effective_lora_mode": "none",
+      "token_grid": [
+        4,
+        4
+      ],
+      "tokens_per_slot": [
+        8,
+        8
+      ]
+    }
+  }
+}

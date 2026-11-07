@@ -1,0 +1,98 @@
+{
+  "version": "0.2.0a1",
+  "date": "2026-11-07",
+  "requested_omissions": [
+    "App Mode",
+    "per-character negative prompts"
+  ],
+  "gpu": "NVIDIA GeForce RTX 5060 Ti (single visible GPU by UUID)",
+  "auto_launch_browser": "Disable",
+  "unit_tests": 39,
+  "source_assets_verified": 95,
+  "anima_small_same_input_cases": 36,
+  "anima_small_max_abs": 0.0,
+  "anima_actual_same_input_max_abs": {
+    "normal": 0.0,
+    "precision": 0.0
+  },
+  "saved_4070_output_vs_5060_replay": {
+    "max_abs": 0.03125,
+    "note": "Diagnostic drift across GPUs/kernels; same-device ComfyUI/Forge comparison remains strict."
+  },
+  "native_small_families": [
+    "Anima",
+    "SD1.5",
+    "SDXL",
+    "Krea2",
+    "MOSS",
+    "FLUX1",
+    "FLUX2"
+  ],
+  "actual_anima_paths": [
+    "camera+interaction",
+    "painted/external mask",
+    "body parts",
+    "text region",
+    "progressive resolution",
+    "learned pose",
+    "reference frame",
+    "asymmetric v2",
+    "Role K/V",
+    "legacy reference",
+    "YOLO detailer",
+    "multi-character tag match"
+  ],
+  "image_to_3d": {
+    "people": 1,
+    "editable_scene": true
+  },
+  "taggers": {
+    "WD ViT v3": "33 scored tags observed, actual weights, CPU",
+    "PixAI Tagger v1.0": "19 scored tags observed, actual weights, CPU; full scores not retained"
+  },
+  "webui_highres": {
+    "size": [
+      1728,
+      1152
+    ],
+    "sampler": "Euler a",
+    "scheduler": "SGM Uniform",
+    "steps": 24,
+    "cfg": 4,
+    "seed": 824201,
+    "model_calls": 24,
+    "restored_calls": 24,
+    "features_preserved": true,
+    "three_slots_preserved": true,
+    "unused_UI_tail_slots": 7,
+    "progressive_token_grids": [
+      [
+        48,
+        72
+      ],
+      [
+        60,
+        90
+      ],
+      [
+        72,
+        108
+      ]
+    ],
+    "quality_observation": "Additional person, duplicate gift boxes and unreadable text; runtime smoke does not establish scene quality."
+  },
+  "limits": [
+    "No App Mode or per-character negatives",
+    "No trained-checkpoint generation for non-Anima families",
+    "No all-combination end-to-end image equality",
+    "No paid NAI API call; settings bridge only",
+    "External reference images are local assets, not embedded PNG pixels"
+  ],
+  "folder_detailer": {
+    "images": 1,
+    "sam": "sam_vit_b_01ec64.pth",
+    "edited_regions": 1,
+    "checkpoint_loaded_on_first_action": true,
+    "existing_output_guard": true
+  }
+}

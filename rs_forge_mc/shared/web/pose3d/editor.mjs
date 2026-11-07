@@ -306,8 +306,8 @@ function requestImage(file){
     if(!['image/png','image/jpeg','image/webp'].includes(file.type)||file.size>20*1024*1024){status('Choose a PNG/JPEG/WebP under 20 MB.');return;}
     if(state.version!==2){status('Image → 3D needs a new MHR scene.');return;}
     imageRequest={id:crypto.randomUUID(),person:selected,before:JSON.stringify(state)};controls();
-    status(text('imageRunning','Image → 3D: queued in ComfyUI. First use may download 2.83 GB.'));
-    tell('rs-pose3d-image-request',{requestId:imageRequest.id,file});
+    status(text('imageRunning','Image → 3D: running in Forge. First use may download 2.83 GB.'));
+    tell('rs-pose3d-image-request',{requestId:imageRequest.id,file,person:selected,scene:state});
 }
 $('pose-image-file').onchange=()=>{
     const file=$('pose-image-file').files[0];$('pose-image-file').value='';requestImage(file);

@@ -162,7 +162,7 @@
         // The original editor reads its message token from location.hash.
         frame.title = 'RS 3D Pose'; frame.src = `/rs_mc_forge/assets/web/pose3d/index.html?v=0.1.0a3#${token}`;
         modal.append(close, frame); document.body.append(modal);
-        function receive(event) {
+        async function receive(event) {
             if (event.source !== frame.contentWindow || event.origin !== location.origin || event.data?.token !== token) return;
             if (event.data.type === 'rs-pose3d-ready') {
                 frame.contentWindow.postMessage({type:'rs-pose3d-init',token,scene,locale:navigator.language,
@@ -170,8 +170,15 @@
             } else if (event.data.type === 'rs-pose3d-apply') {
                 writeScene(id, event.data.scene);
             } else if (event.data.type === 'rs-pose3d-image-request') {
-                frame.contentWindow.postMessage({type:'rs-pose3d-image-error',token,requestId:event.data.requestId,
-                    error:'Image → 3D estimation is not connected to the Forge backend yet.'},location.origin);
+                const requestId=event.data.requestId;
+                try {
+                    const query=new URLSearchParams({character:String(event.data.person),scene:JSON.stringify(event.data.scene)});
+                    const response=await fetch('/rs_mc_forge/image-pose?'+query,{method:'POST',body:event.data.file});
+                    const data=await response.json();if(!response.ok)throw Error(data.error||'3D estimation failed.');
+                    frame.contentWindow.postMessage({type:'rs-pose3d-image-result',token,requestId,...data},location.origin);
+                } catch(error) {
+                    frame.contentWindow.postMessage({type:'rs-pose3d-image-error',token,requestId,error:error.message},location.origin);
+                }
             }
         }
         window.addEventListener('message', receive);

@@ -1,38 +1,37 @@
-# ComfyUI → Forge feature comparison / 기능 비교
+# ComfyUI → Forge feature comparison
 
-Audited 2026-11-07 against the installed ComfyUI RS MultiCharacter Sampler source. Forge version: `0.1.0a5`. **App Mode is not the only omitted feature.**
+Audited 2026-11-07 against the installed original. Forge **0.2.0a1** ports the remaining feature modules, with **App Mode and per-character negative prompts deliberately omitted**. Host-specific graph connections are represented by forms or metadata interchange. An implemented path and an actual-checkpoint test are different claims.
 
-| Original capability / 원본 기능 | Forge status / 상태 | Scope / 범위 |
+| Original capability | Forge status | Scope and evidence |
 | --- | --- | --- |
-| Shared scene and numbered character prompts | Included | Up to 10 slots; actual count is model-dependent |
-| Character-specific negative prompts | Not ported | Use the shared Forge Negative field |
-| Character pipeline assembly and validation | Reused | Original BuildPipe / Finalize / CharacterPipe; Gradio presentation |
-| Point / Box placement | Included | Original overlap priority and edge smoothing |
-| Regional cross-attention / self-attention separation | Included | Original routing and schedule |
-| Character model/text encoder LoRA strengths | Included | Floating-point plain linear LoRA factors only |
-| Normal / Precision | Included | Original algebra; layer-layout fallback recorded |
-| LoCon, DoRA, LoHa, LoKr, GLoRA, OFT, IA³, diff/set, etc. | Not ported | Original supports more adapter formats |
-| GGUF / native quantization interoperability | Outside support scope | Original loader/adapter coverage is not claimed |
-| 3D joint / finger / mannequin editing | Included | Original assets plus Forge presentation adapter |
-| 3D camera, full/visible silhouette regions | Included | Mask projection; not camera conditioning |
-| Body-part prompt masks / emphasis | Not ported | Current 3D path supplies whole-character silhouettes |
-| Pose library save / random / JSON export | Included | Forge models/rs_pose3d/ |
-| JSON / OpenPose / DWPose / Yu Zhu / named BVH / ZIP import | Included via 3D editor | 2D input cannot recover true depth |
-| Arbitrary painted numbered masks / external masks | Not ported | Custom-mask UI currently uses 3D silhouettes |
-| Dedicated interaction controls | Not ported | Actions can be written in prompt text |
-| Dedicated camera conditioning | Not ported | Separate from orbit/FOV in 3D editor |
-| Learned Anima pose adapter | Not ported | Silhouettes do not provide learned joint conditioning |
-| Character image reference, including v2 | Not ported | Forge Anima reference rejected while enabled |
-| Image → 3D body estimation | Not ported | Disabled; manual editing/import available |
-| Detailer / segmentation / folder correction | Not ported | Original detector-based correction absent |
-| Tagger and detection loaders | Not ported | No Forge adapters |
-| Progressive-resolution sampler | Not ported | Forge Hires.fix is a separate tested feature |
-| Text regions / layout tools | Not ported | Current slots are character prompts |
-| RS NAI / context pipe interoperability | Not ported | Forge JSON does not replace node pipes |
-| App Mode / graph UI | Not ported | Floating Forge character forms |
-| Generation metadata and restoration | Forge equivalent | parameters + RS JSON; PNG Info / prompt-drop + restore / presets |
-| ComfyUI workflow embedding/loading | Not included | No graph in Forge PNGs |
-| SDXL/Illustrious, FLUX, Krea 2, MOSS, SD1.5 | Not ported | Current release targets Anima |
-| txt2img / img2img / Hires.fix | Forge integration | Actual checkpoint generation tested |
+| Shared + numbered prompts, up to 10 slots | Included | Floating character forms; common Forge Negative |
+| Per-character negatives | Omitted by request | Common negative remains |
+| BuildPipe / Finalize / Point / Box | Reused | Original validation, priority and edge smoothing |
+| Attention routing / separation / Normal / Precision | Included | Expanded Anima route: 36 exact small-model comparison cases |
+| Character model / text-encoder LoRA strengths | Included | Native Forge loading and scoped deltas |
+| LoCon / DoRA / LoHa / LoKr / GLoRA / OFT / IA³ / diff / set etc. | Included where loader/layer supports | Extended formats use Precision if shared Normal is unsuitable; full trained-adapter matrix unverified |
+| Arbitrary painted / external masks | Included | Character form; expansion, offset and scale |
+| Body-part masks and emphasis | Included | OpenPose / 3D semantic parts, actual Anima execution |
+| 3D joints / fingers / mannequin / silhouettes | Included | Original editor and Forge adapter |
+| Pose library / JSON / OpenPose / DWPose / Yu Zhu / BVH / ZIP | Included | Original library/import implementations |
+| Interaction presets / custom separation schedule | Included | Original interaction.py; actual Anima execution |
+| Dedicated camera conditions / coordinate synchronization | Included | Independent of editor orbit; original camera_control.py |
+| Learned pose adapters | Included | Anima actual execution; native family paths retained where Forge has the architecture |
+| Anima references: frame / asymmetric v2 / Role K/V / legacy | Included | All four executed with actual Anima weights; original mutual exclusions retained |
+| SD IP-Adapter / native FLUX, Krea, MOSS references | Included | Native integrations; trained-checkpoint generation not validated here |
+| Image → 3D | Included | SAM 3D Body; actual single-person inference and editor import |
+| Detailer: SEGM / BBOX / SAM | Included | Forge masked img2img; actual YOLO + SAM execution |
+| WD / PixAI taggers | Included | Actual local inference; optional dependencies |
+| Local-folder detailer | Included | Explicit input/output paths; one small batch executed |
+| Progressive resolution | Included | Native solver sigma slices / latent resizing; actual Anima execution |
+| Literal text regions / layout selection | Included | Slot kind, MOSS native JSON selection and regional routes |
+| NovelAI weighting syntax | Included | Original prompt syntax conversion |
+| RS NAI / ComfyUI context interoperability | Metadata bridge | Original RS/NAI PNG/JSON import and NAI-compatible export; no graph executor in Forge |
+| Native PNG / preset restoration | Included | Advanced state, masks, body parts, LoRAs, scene, seeds and schedule |
+| App Mode / node graph | Omitted by request | Floating Forge forms |
+| SD1.5 / SDXL / FLUX1 / FLUX2 / Krea 2 / MOSS | Native execution paths | Seven families including Anima passed small random-weight forward/cleanup checks |
+| FLUX3 | Source route retained | Tested Forge revision has no native Flux3 implementation; unavailable there |
+| Quantized/GGUF models | Conditional on host | Generic layer hooks retained; quantizer/device combinations unverified. Nunchaku rejected |
+| txt2img / img2img / Hires.fix | Forge integration | a5 actual generation retained; progressive path is txt2img only |
 
-“Included” identifies an implemented path, not every combination or guaranteed model output. See [validation](validation.md).
+Masks and pose controls guide generation; they do not guarantee exact people, text, anatomy, contact or identity. Every feature combination has not been tested. See [validation](validation.md) and [advanced setup](advanced.md).

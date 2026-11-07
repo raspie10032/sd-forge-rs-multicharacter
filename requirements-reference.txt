@@ -1,0 +1,5 @@
+# Optional: image references only. Base Forge already supplies most of these.
+transformers>=4.50,<6
+huggingface-hub>=0.36,<2
+safetensors>=0.4
+einops>=0.8

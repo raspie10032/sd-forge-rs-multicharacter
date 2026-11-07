@@ -10,8 +10,8 @@
     const notice = document.createElement('p');
     notice.className = 'forge-pose-notice';
     $('image-drop').before(notice);
-    $('image-drop').hidden = true;
-    $('image-pose').disabled = $('pose-image-file').disabled = true;
+    $('image-drop').hidden = false;
+
     // Keep output size controlled by Forge, rather than silently creating a
     // mask with a different aspect ratio inside the embedded editor.
     $('width').readOnly = $('height').readOnly = true;
@@ -19,8 +19,8 @@
         const ko = locale.startsWith('ko');
         $('apply').textContent = ko ? '캐릭터 영역에 적용' : 'Apply to character regions';
         $('apply').dataset.i18n = 'forgeApply';
-        notice.textContent = ko ? '이미지 → 3D 추정은 준비 중입니다. 관절 편집과 포즈 라이브러리를 사용할 수 있습니다.'
-            : 'Image → 3D estimation is not available yet. Use joint editing or the pose library.';
+        notice.textContent = ko ? '한 명이 나온 이미지로 3D 자세를 추정합니다. 첫 사용 시 2.83 GB 가중치를 내려받습니다.'
+            : 'Estimate one person, then edit the joints. First use downloads 2.83 GB weights.';
         $('width').title = $('height').title = ko ? 'Forge 출력 비율에 맞춘 편집 캔버스' : 'Editor canvas follows the Forge output ratio';
     }
     localize(navigator.language);

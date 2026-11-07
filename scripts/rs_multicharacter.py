@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Always-visible Forge extension. Heavy imports only when enabled."""
-from contextlib import nullcontext
+
 import logging
 
-from modules import scripts, shared
+from modules import scripts
 
 from rs_forge_mc import __version__
 from rs_forge_mc import api  # noqa: F401 -- register local editor routes
@@ -21,55 +21,82 @@ class Script(scripts.Script):
 
     def ui(self, is_img2img):
         from rs_forge_mc.ui import build
+
         return build(self, is_img2img)
 
     def after_component(self, component, **kwargs):
-        for dimension in ('width', 'height'):
-            if component.elem_id in (f'txt2img_{dimension}', f'img2img_{dimension}'):
-                if not hasattr(self, 'rs_dimensions'):
+        for dimension in ("width", "height"):
+            if component.elem_id in (f"txt2img_{dimension}", f"img2img_{dimension}"):
+                if not hasattr(self, "rs_dimensions"):
                     self.rs_dimensions = {}
                 self.rs_dimensions[dimension] = component
+
+    def process(self, p, enabled, *values, **kwargs):
+        if not enabled or getattr(p, "_rs_mc_detail_pass", False):
+            return
+        config = from_ui(values)
+        camera = config.features.get("camera", {})
+        if camera.get("enabled"):
+            from rs_forge_mc.shared.camera_control import RSCameraControl
+
+            def add(text):
+                return RSCameraControl().apply(**camera, base_prompt=text)["result"][1]
+
+            p.all_prompts = [add(text) for text in p.all_prompts]
+            p.prompt = add(p.prompt) if isinstance(p.prompt, str) else p.prompt
+        if config.features.get("syntax") == "NovelAI":
+            from rs_forge_mc.shared.prompt_syntax import to_comfyui, parse_naiv4
+
+            p.all_prompts = [to_comfyui(parse_naiv4(t)) for t in p.all_prompts]
+            p.all_negative_prompts = [to_comfyui(parse_naiv4(t)) for t in p.all_negative_prompts]
+        from rs_forge_mc.layout import resolve, native_prompt
+        from rs_forge_mc.native_runtime import model_family
+
+        if resolve(config, model_family(p.sd_model.forge_objects.unet)) == "moss_native":
+            p.all_prompts = [native_prompt(config, t, p.width, p.height) for t in p.all_prompts]
+            if isinstance(p.prompt, str):
+                p.prompt = native_prompt(config, p.prompt, p.width, p.height)
+        if config.features.get("progressive", {}).get("start_scale", 1.0) < 1.0:
+            from rs_forge_mc.progressive import install
+
+            install(p, config)
+        p._rs_mc_config = config
+
+    def postprocess_image(self, p, pp, *args):
+        config = getattr(p, "_rs_mc_config", None)
+        if (
+            config
+            and config.features.get("detailer", {}).get("enabled")
+            and not getattr(p, "_rs_mc_detail_pass", False)
+        ):
+            from rs_forge_mc.detail import run
+
+            pp.image, report = run(pp.image, p, config)
+            p.extra_generation_params["RS detailer report"] = __import__("json").dumps(
+                report, ensure_ascii=True
+            )
 
     def process_before_every_sampling(self, p, enabled, *values, **kwargs):
         if not enabled:
             return
-        if getattr(p, "_ad_inner", False):
+        if getattr(p, "_ad_inner", False) or getattr(p, "_rs_mc_detail_pass", False):
             return
         # Neo resets forge_objects from its LoRA base before each pass, so the
         # new clone belongs to this batch/pass (txt2img, img2img or Hires).
         original = p.sd_model.forge_objects.unet
         try:
-            from backend.args import dynamic_args
-            from modules.prompt_parser import SdConditioning
-            from rs_forge_mc.lora import load_plans
-            from rs_forge_mc.runtime import RUNTIME_LOCK, install, validate_model
+            from rs_forge_mc.progressive import attach
+
+            attach(p)
+            from rs_forge_mc.integration import install
 
             config = from_ui(values)
             config.validate_generation()
-            pipe = config.to_pipe()
-            validate_model(original)
-            if dynamic_args.ref_latents or getattr(shared.opts, "anima_do_reference", False):
-                raise ValueError("Disable Anima image reference while using RS MultiCharacter alpha.")
-            if getattr(dynamic_args, "nunchaku", False):
-                raise ValueError("Nunchaku is unsupported for RS MultiCharacter alpha.")
             if kwargs.get("x") is None:
                 raise ValueError("Forge Neo did not provide the current sampling latent.")
-            height, width = (int(v)*8 for v in kwargs["x"].shape[-2:])
-            clip = p.sd_model.forge_objects.clip
-            with RUNTIME_LOCK:
-                model_plans, text_plans = load_plans(original, clip, pipe.regions)
-                contexts = []
-                for character in pipe.regions:
-                    plan = text_plans.get(character.lora_name)
-                    scope = plan.applied(clip.cond_stage_model, character.lora_clip_strength) if plan else nullcontext()
-                    prompt = SdConditioning([character.prompt], width=width, height=height,
-                                            distilled_cfg_scale=getattr(p, "distilled_cfg_scale", None))
-                    with scope:
-                        context = p.sd_model.get_learned_conditioning(prompt)
-                    if not isinstance(context, list) or len(context) != 1:
-                        raise ValueError("Unexpected Anima character conditioning format.")
-                    contexts.append(context[0].detach().cpu())
-                patched, runtime = install(original, config, contexts, model_plans)
+            if p.batch_size != 1:
+                raise ValueError("RS routing uses batch size 1; use batch count for multiple images.")
+            patched, runtime = install(p, config, kwargs["x"])
             p.sd_model.forge_objects.unet = patched
             p._rs_mc_runtime = runtime
             p._rs_mc_restore = (original, patched)
@@ -96,11 +123,17 @@ class Script(scripts.Script):
             raise RuntimeError(f"RS MultiCharacter: {error}") from error
 
     def postprocess(self, p, processed, *args):
+        sampler_restore = getattr(p, "_rs_mc_sampler_restore", None)
+        if sampler_restore:
+            sampler_restore()
         restore = getattr(p, "_rs_mc_restore", None)
         if restore and p.sd_model.forge_objects.unet is restore[1]:
             p.sd_model.forge_objects.unet = restore[0]
         runtime = getattr(p, "_rs_mc_runtime", None)
         if runtime:
+            runtime.clear()
+            api.LAST_AUDIT.clear()
+            api.LAST_AUDIT.update(runtime.audit)
             logger.info("RS MultiCharacter audit: %s", runtime.audit)
-        for name in ("_rs_mc_runtime", "_rs_mc_restore"):
+        for name in ("_rs_mc_runtime", "_rs_mc_restore", "_rs_mc_config", "_rs_mc_sampler_restore"):
             p.__dict__.pop(name, None)
