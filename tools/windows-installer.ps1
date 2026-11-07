@@ -70,7 +70,7 @@ function Assert-RsMcDirectory([string]$Path) {
 function Get-RsMcRelease {
     $headers = @{ 'User-Agent' = 'RS-MultiCharacter-Windows-Installer'; 'Accept' = 'application/vnd.github+json' }
     # /latest excludes prereleases; the project currently publishes alpha releases.
-    $releases = @(Invoke-RestMethod -Uri "https://api.github.com/repos/$script:RsMcRepository/releases?per_page=100" -Headers $headers)
+    $releases = Invoke-RestMethod -Uri "https://api.github.com/repos/$script:RsMcRepository/releases?per_page=100" -Headers $headers
     foreach ($release in @($releases | Where-Object { -not $_.draft } | Sort-Object published_at -Descending)) {
         $zip = @($release.assets | Where-Object { $_.name -match '^sd-forge-rs-multicharacter-[0-9][\w.\-]*\.zip$' })
         $sums = @($release.assets | Where-Object { $_.name -eq 'SHA256SUMS' })

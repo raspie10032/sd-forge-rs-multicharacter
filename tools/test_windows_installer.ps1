@@ -55,6 +55,22 @@ try {
     $sourceText = [IO.File]::ReadAllText((Join-Path $PSScriptRoot 'windows-installer.ps1')).Trim()
     Check ($payloadText.Replace("`r`n", "`n") -ceq $sourceText.Replace("`r`n", "`n")) 'Standalone BAT embeds the exact source'
 
+    # Invoke-RestMethod writes a JSON root array as one pipeline object on PS 5.1/7.
+    # Include a newer asset-less release and a draft to check usable-alpha selection.
+    function Invoke-RestMethod {
+        $assets = @([pscustomobject]@{ name = 'sd-forge-rs-multicharacter-0.2.0a2.zip' },
+                    [pscustomobject]@{ name = 'SHA256SUMS' })
+        return ,@(
+            [pscustomobject]@{ draft = $false; tag_name = 'empty'; published_at = '2026-11-10'; assets = @() },
+            [pscustomobject]@{ draft = $true; tag_name = 'draft'; published_at = '2026-11-09'; assets = $assets },
+            [pscustomobject]@{ draft = $false; tag_name = 'v0.2.0a2'; published_at = '2026-11-08'; assets = $assets },
+            [pscustomobject]@{ draft = $false; tag_name = 'v0.1.0'; published_at = '2026-11-07'; assets = $assets }
+        )
+    }
+    try {
+        Check ((Get-RsMcRelease).Tag -eq 'v0.2.0a2') 'Selects the newest usable published alpha from an API array'
+    } finally { Remove-Item Function:\Invoke-RestMethod }
+
     # Build non-ASCII paths without relying on PS 5.1 source-file encoding.
     $unicode = [string][char]0xD55C + [char]0x65E5 + [char]0x4E2D
     $root = New-Forge (Join-Path $temp ("Forge [x] ! & ' (" + $unicode + ')'))
